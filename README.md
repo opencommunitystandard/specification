@@ -6,7 +6,8 @@ This is a fork of the specification documentation created by the OpenReferral in
 
 Information and notes on the [OpenCommunity project can be found here](https://opencommunity.org.uk/).
 
-## License
+
+## Licence
 
 The Human Services Data Specification and its documentation are [licensed](LICENSE) under the Creative Commons Attribution-ShareAlike (CC BY-SA) license.
 
@@ -42,3 +43,25 @@ sphinx-autobuild . _build
 ```
 
 Autobuild also provides a local server to view the documentation.
+
+## Deploying to Github Pages
+
+Build docs:
+
+```
+cd docs
+sphinx-autobuild . _build/
+```
+
+Add changes:
+
+```
+cd ..
+git add -f docs/_build && git commit -m "Update pages for deploy"
+```
+
+Push to branch:
+
+```
+git subtree push --prefix docs/_build/ origin gh-pages
+```
