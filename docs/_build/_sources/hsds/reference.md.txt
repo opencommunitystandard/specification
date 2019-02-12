@@ -2,7 +2,7 @@
 .. _hsds-spec:
 ```
 
-HSDS Reference
+HSDS Reference (OpenCommunity Revision)
 ==============
 
 The Human Services Data Specification defines a set of objects and the relationships between them.

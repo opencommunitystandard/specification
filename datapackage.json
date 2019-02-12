@@ -1,7 +1,7 @@
-      {
+    {
         "name": "human_services_data",
         "title": "Human Services Data Specification Template",
-        "description":"This is a template datapackage.json file for producing a Tabular Data Package of data according to the Human Services Data Specification. You should provide an edited version of this file as part of any datapackage you provide, updating the title, description, license and homepage information to reflect the data you are publishing.", 
+        "description":"This is a template datapackage.json file for producing a Tabular Data Package of data according to the Human Services Data Specification. You should provide an edited version of this file as part of any datapackage you provide, updating the title, description, license and homepage information to reflect the data you are publishing.",
         "license": {
                 "url": "https://creativecommons.org/licenses/by-sa/4.0/",
                 "type": "CC-BY-SA-4.0",
@@ -13,7 +13,7 @@
             {
                 "name": "organization",
                 "path": "organizations.csv",
-                "description":"The organization record is used to provide basic description and details about each organization delivering services. Each service should be linked to the organization responsible for its delivery. One organization may deliver many services.",
+                "description":"The organization record is used to provide basic description and details about each organization delivering services. Each service should be linked to the organization most responsible for its delivery. One organization may deliver many services. Organizations do not need to be formally established. An organization may exist as part of a larger organization.",
                 "format": "csv",
                 "mediatype": "text/csv",
                 "schema": {
@@ -71,38 +71,23 @@
                             }
                         },
                         {
-                            "name": "tax_status",
+                            "name": "register",
                             "type": "string",
-                            "description":"Government assigned tax designation for tax-exempt organizations.",
+                            "format":"url",
+                            "description":"The name of the body that the organization is registered with.",
                             "constraints": {
                                 "required":false
                             }
                         },
                         {
-                            "name": "tax_id",
+                            "name": "register_id",
                             "type": "string",
-                            "description":"A government issued identifier used for the purpose of tax administration.",
-                            "constraints": {
-                                "required":false
-                            }
-                        },
-                        {
-                            "name": "year_incorporated",
-                            "type": "date",
-                            "format": "%Y",
-                            "description":"The year in which the organization was legally formed.",
-                            "constraints": {
-                                "required":false
-                            }
-                        },
-                        {
-                            "name": "legal_status",
-                            "type": "string",
-                            "description":"The legal status defines the conditions that an organization is operating under; e.g. non-profit, private corporation or a government organization.",
+                            "description":"The identifier issued to the organization by its main registring body.",
                             "constraints": {
                                 "required":false
                             }
                         }
+
                     ],
                     "primaryKey": "id"
                 }
@@ -110,7 +95,7 @@
             {
                 "name": "program",
                 "path": "programs.csv",
-                "description":"Some organizations organise their services into programs. A program brings together a number of related services.",
+                "description":"OUT OF SCOPE? - Some organizations organise their services into programs. A program brings together a number of related services.",
                 "format": "csv",
                 "mediatype": "text/csv",
                 "schema": {
@@ -241,7 +226,7 @@
                         },
                         {
                             "name": "status",
-                            "description": "The current status of the service.",
+                            "description": "The current status of the service (active/inactive/defunct/temporarily closed).",
                             "type": "string",
                             "constraints": {
                                 "enum": ["active", "inactive", "defunct", "temporarily closed"],
@@ -331,7 +316,7 @@
                 "format": "csv",
                 "mediatype": "text/csv",
                 "schema": {
-                    "fields": [   
+                    "fields": [
                         {
                             "name": "id",
                             "type": "string",
@@ -538,11 +523,6 @@
                             "type": "string"
                         },
                         {
-                            "name": "contact_id",
-                            "description": "The identifier of the contact for which this is the phone number",
-                            "type": "string"
-                        },
-                        {
                             "name": "service_at_location_id",
                             "description": "The identifier of the 'service at location' table entry, when this phone number is specific to a service in a particular location.",
                             "type": "string"
@@ -597,92 +577,6 @@
                             "fields": "location_id",
                             "reference": {
                                 "resource": "location",
-                                "fields": "id"
-                            }
-                        },
-                        {
-                            "fields": "service_id",
-                            "reference": {
-                                "resource": "service",
-                                "fields": "id"
-                            }
-                        },
-                        {
-                            "fields": "contact_id",
-                            "reference": {
-                                "resource": "contact",
-                                "fields": "id"
-                            }
-                        },
-                        {
-                            "fields": "service_at_location_id",
-                            "reference": {
-                                "resource": "service_at_location",
-                                "fields": "id"
-                            }
-                        }
-                    ]
-                }
-            },
-            {
-                "name": "contact",
-                "path": "contacts.csv",
-                "description": "The contact table contains details of the named contacts for services and organizations. Note that in the HSDS data package format, if an individual is the contact for multiple services, their details may be duplicated multiple times in this table, each time with a new identifier, and with the rows containing different service ids.",
-                "format": "csv",
-                "mediatype": "text/csv",
-                "schema": {
-                    "fields": [
-                        {
-                            "name": "id",
-                            "description": "Each contact must have a unique identifier",
-                            "type": "string",
-                            "constraints": {
-                                "required":true
-                            }
-                        },
-                        {
-                            "name": "organization_id",
-                            "description": "The identifier of the organization for which this is a contact",
-                            "type": "string"
-                        },
-                        {
-                            "name": "service_id",
-                            "description": "The identifier of the service for which this is a contact",
-                            "type": "string"
-                        },
-                        {
-                            "name": "service_at_location_id",
-                            "description": "The identifier of the 'service at location' table entry, when this contact is specific to a service in a particular location.",
-                            "type": "string"
-                        },
-                        {
-                            "name": "name",
-                            "description": "The name of the person",
-                            "type": "string"
-                        },
-                        {
-                            "name": "title",
-                            "description": "The job title of the person",
-                            "type": "string"
-                        },
-                        {
-                            "name": "department",
-                            "description": "The department that the person is part of",
-                            "type": "string"
-                        },
-                        {
-                            "name": "email",
-                            "description": "The email address of the person",
-                            "type": "string",
-                            "format":"email"
-                        }
-                    ],
-                    "primaryKey": "id",
-                    "foreignKeys": [
-                        {
-                            "fields": "organization_id",
-                            "reference": {
-                                "resource": "organization",
                                 "fields": "id"
                             }
                         },
@@ -769,14 +663,6 @@
                             }
                         },
                         {
-                            "name": "state_province",
-                            "description": "The state or province in which the address is located.",
-                            "type": "string",
-                            "constraints": {
-                                "required":true
-                            }
-                        },
-                        {
                             "name": "postal_code",
                             "description": "The postal code for the address.",
                             "type": "string",
@@ -808,7 +694,7 @@
             {
                 "name": "postal_address",
                 "path": "postal_addresses.csv",
-                "description": "The postal_address table contains the postal addresses for mail to a certain location. This may differ from the physical location.",
+                "description": "OUT OF SCOPE? - The postal_address table contains the postal addresses for mail to a certain location. This may differ from the physical location.",
                 "format": "csv",
                 "mediatype": "text/csv",
                 "schema": {
@@ -911,7 +797,7 @@
             {
                 "name": "regular_schedule",
                 "path": "regular_schedules.csv",
-                "description": "The regular_schedule table contains details of when a service or location is open under normal circumstances. Each entry in the table can relate to one and only one day of the week.",
+                "description": "OUT OF SCOPE? - The regular_schedule table contains details of when a service or location is open under normal circumstances. Each entry in the table can relate to one and only one day of the week.",
                 "format": "csv",
                 "mediatype": "text/csv",
                 "schema": {
@@ -987,7 +873,7 @@
             {
                 "name": "holiday_schedule",
                 "path": "holiday_schedules.csv",
-                "description": "The holiday_schedule table contains details of when a service or location is open during holidays. Each entry in the table describes a period of one or more days, and the operating times on those days.",
+                "description": "OUT OF SCOPE? - The holiday_schedule table contains details of when a service or location is open during holidays. Each entry in the table describes a period of one or more days, and the operating times on those days.",
                 "format": "csv",
                 "mediatype": "text/csv",
                 "schema": {
@@ -1077,60 +963,9 @@
                 }
             },
             {
-                "name": "funding",
-                "path": "funding.csv",
-                "description": "The funding table describes the sources of funding for a service or organisation",
-                "format": "csv",
-                "mediatype": "text/csv",
-                "schema": {
-                    "fields": [
-                        {
-                            "name": "id",
-                            "description": "Each entry must have a unique identifier",
-                            "type": "string",
-                            "constraints": {
-                                "required":true
-                            }
-                        },
-                        {
-                            "name": "organization_id",
-                            "description": "The identifier of the organization in receipt of this funding.",
-                            "type": "string"
-                        },
-                        {
-                            "name": "service_id",
-                            "description": "The identifier of the service in receipt of this funding",
-                            "type": "string"
-                        },
-                        {
-                            "name": "source",
-                            "description": "A free text description of the source of funds for this organization or service.",
-                            "type": "string"
-                        }
-                    ],
-                    "primaryKey": "id",
-                    "foreignKeys": [
-                        {
-                            "fields": "service_id",
-                            "reference": {
-                                "resource": "service",
-                                "fields": "id"
-                            }
-                        },
-                        {
-                            "fields": "organization_id",
-                            "reference": {
-                                "resource": "organization",
-                                "fields": "id"
-                            }
-                        }
-                    ]
-                }
-            },
-            {
                 "name": "eligibility",
                 "path": "eligibility.csv",
-                "description": "The eligibility tables contains details of the eligibility criteria for particular services",
+                "description": "OUT OF SCOPE? - The eligibility tables contains details of the eligibility criteria for particular services",
                 "format": "csv",
                 "mediatype": "text/csv",
                 "schema": {
@@ -1200,6 +1035,16 @@
                             "name":"description",
                             "description":"A more detailed description of this service area. Used to provide any additional information that cannot be communicated using the structured area and geometry fields.",
                             "type":"string"
+                        },
+                        {
+                            "name": "identifier",
+                            "description": "The identifier for the given boundary.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "type",
+                            "description": "The type of boundary.",
+                            "type": "string"
                         }
                     ],
                     "primaryKey": "id",
