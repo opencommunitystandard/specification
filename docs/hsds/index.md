@@ -33,11 +33,9 @@ The [reference documentation](hsds-spec) describes the structure of HSDS data, a
 
    about
    reference
-   use_cases
-   logical_model
+   changes
    producing_sharing
    sample_data
-   changelog
-  
+   changelog  
   
    ```
