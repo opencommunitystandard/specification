@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>HSDS Reference &mdash; Open Referral Data Specifications 1.1 documentation</title>
+  <title>HSDS Reference (OpenCommunity Revision) &mdash; Open Referral Data Specifications 1.1 documentation</title>
   
 
   
@@ -43,7 +43,7 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="Open Referral Data Specifications 1.1 documentation" href="../index.html"/>
         <link rel="up" title="Human Services Data Specification (HSDS)" href="index.html"/>
-        <link rel="next" title="Changes" href="changes.html"/>
+        <link rel="next" title="Proposed adapations for Open Community" href="changes.html"/>
         <link rel="prev" title="About HSDS" href="about.html"/> 
 
   
@@ -101,7 +101,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Open Community - HSDS</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Human Services Data Specification (HSDS)</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="about.html">About HSDS</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">HSDS Reference</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">HSDS Reference (OpenCommunity Revision)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#names-and-descriptions">Names and descriptions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#objects-and-fields">Objects and fields</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#organization">organization</a></li>
@@ -111,12 +111,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#service_at_location">service_at_location</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#location">location</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#phone">phone</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#contact">contact</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#physical_address">physical_address</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#postal_address">postal_address</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#regular_schedule">regular_schedule</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#holiday_schedule">holiday_schedule</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#funding">funding</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#eligibility">eligibility</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#service_area">service_area</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#required_document">required_document</a></li>
@@ -130,9 +128,8 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html">Changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html">Proposed adapations for Open Community</a></li>
 <li class="toctree-l2"><a class="reference internal" href="producing_sharing.html">Producing and Sharing Compliant Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sample_data.html">Sample data</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../design_principles.html">Design Principles</a></li>
@@ -183,7 +180,7 @@
         
           <li><a href="index.html">Human Services Data Specification (HSDS)</a> &raquo;</li>
         
-      <li>HSDS Reference</li>
+      <li>HSDS Reference (OpenCommunity Revision)</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -202,8 +199,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="hsds-reference">
-<span id="hsds-spec"></span><h1>HSDS Reference<a class="headerlink" href="#hsds-reference" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="hsds-reference-opencommunity-revision">
+<span id="hsds-spec"></span><h1>HSDS Reference (OpenCommunity Revision)<a class="headerlink" href="#hsds-reference-opencommunity-revision" title="Permalink to this headline">¶</a></h1>
 <p>The Human Services Data Specification defines a set of objects and the relationships between them.</p>
 <p>This page provides the canonical definition of each object and its required or optional fields.</p>
 <p>A collection of HSDS data can be serialised as a <a class="reference external" href="http://specs.frictionlessdata.io/tabular-data-package/">Tabular Data Package</a> consisting of csv files for each of the objects required, and a <a class="reference external" href="http://specs.frictionlessdata.io/tabular-data-package/#specification">package descriptor (datapackage.json)</a> file adapted from the current <a class="reference external" href="https://github.com/openreferral/specification/blob/master/datapackage.json">HSDS specification</a> to include any additional fields and meta-data from the data publisher.</p>
@@ -219,7 +216,7 @@
 <h2>Objects and fields<a class="headerlink" href="#objects-and-fields" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="organization">
 <h3>organization<a class="headerlink" href="#organization" title="Permalink to this headline">¶</a></h3>
-<p>The organisation record is used to provide basic description and details about each organisation delivering services. Each service should be linked to the organisation most responsible for its delivery. One organisation may deliver many services. Organisations do not need to be formally established. An organisation may exist as part of a larger organisation.</p>
+<p>The organization record is used to provide basic description and details about each organization delivering services. Each service should be linked to the organization most responsible for its delivery. One organization may deliver many services. Organizations do not need to be formally established. An organization may exist as part of a larger organization.</p>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="50%" />
@@ -293,9 +290,9 @@
 <td>False</td>
 <td>False</td>
 </tr>
-<tr class="row-even"><td>url</td>
+<tr class="row-even"><td>register</td>
 <td>string (url)</td>
-<td>The URL (website address) of the body that the organization is registered with.</td>
+<td>The name of the body that the organization is registered with.</td>
 <td>False</td>
 <td>False</td>
 </tr>
@@ -310,7 +307,7 @@
 </div>
 <div class="section" id="program">
 <h3>program<a class="headerlink" href="#program" title="Permalink to this headline">¶</a></h3>
-<p>Some organizations organise their services into programs. A program brings together a number of related services.</p>
+<p>OUT OF SCOPE? - Some organizations organise their services into programs. A program brings together a number of related services.</p>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="50%" />
@@ -465,7 +462,7 @@
 </tr>
 <tr class="row-even"><td>status</td>
 <td>string</td>
-<td>The current status of the service.</td>
+<td>The current status of the service (active/inactive/defunct/temporarily closed).</td>
 <td>True</td>
 <td>False</td>
 </tr>
@@ -803,142 +800,45 @@
 <td>False</td>
 <td>False</td>
 </tr>
-<tr class="row-even"><td>contact_id</td>
-<td>string</td>
-<td>The identifier of the contact for which this is the phone number</td>
-<td>False</td>
-<td>False</td>
-</tr>
-<tr class="row-odd"><td>service_at_location_id</td>
+<tr class="row-even"><td>service_at_location_id</td>
 <td>string</td>
 <td>The identifier of the 'service at location' table entry, when this phone number is specific to a service in a particular location.</td>
 <td>False</td>
 <td>False</td>
 </tr>
-<tr class="row-even"><td>number</td>
+<tr class="row-odd"><td>number</td>
 <td>string</td>
 <td>The phone number</td>
 <td>True</td>
 <td>False</td>
 </tr>
-<tr class="row-odd"><td>extension</td>
+<tr class="row-even"><td>extension</td>
 <td>number</td>
 <td>The extension of the phone number</td>
 <td>False</td>
 <td>False</td>
 </tr>
-<tr class="row-even"><td>type</td>
+<tr class="row-odd"><td>type</td>
 <td>string</td>
 <td>Indicates the type of phone service, drawing from the RFC6350 list of types (text (for SMS), voice, fax, cell, video, pager, textphone).</td>
 <td>False</td>
 <td>False</td>
 </tr>
-<tr class="row-odd"><td>language</td>
+<tr class="row-even"><td>language</td>
 <td>string</td>
 <td>A comma separated list of ISO 639-1, or ISO 639-2 [language codes](available at http://www.loc.gov/standards/iso639-2/php/code_list.php) to represent the languages available from this phone service. The three-letter codes from ISO 639-2 provide greater accuracy when describing variants of languages, which may be relevant to particular communities.</td>
 <td>False</td>
 <td>False</td>
 </tr>
-<tr class="row-even"><td>description</td>
+<tr class="row-odd"><td>description</td>
 <td>string</td>
 <td>A description providing extra information about the phone service (e.g. any special arrangements for accessing, or details of availability at particular times.</td>
 <td>False</td>
 <td>False</td>
 </tr>
-<tr class="row-odd"><td>department</td>
-<td>string</td>
-<td>(Deprecated) The department for which this is the phone number. This field is deprecated and will be removed in a future version of HSDS.</td>
-<td>False</td>
-<td>False</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="contact">
-<h3>contact<a class="headerlink" href="#contact" title="Permalink to this headline">¶</a></h3>
-<p>The contact table contains details of the named contacts for services and organizations. Note that in the HSDS data package format, if an individual is the contact for multiple services, their details may be duplicated multiple times in this table, each time with a new identifier, and with the rows containing different service ids.</p>
-<table border="1" class="colwidths-given docutils">
-<colgroup>
-<col width="50%" />
-<col width="50%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>name</td>
-<td>contact</td>
-</tr>
-<tr class="row-even"><td>path</td>
-<td>contacts.csv</td>
-</tr>
-<tr class="row-odd"><td>format</td>
-<td>csv</td>
-</tr>
-<tr class="row-even"><td>mediatype</td>
-<td>text/csv</td>
-</tr>
-</tbody>
-</table>
-<table border="1" class="colwidths-given docutils">
-<colgroup>
-<col width="17%" />
-<col width="17%" />
-<col width="50%" />
-<col width="8%" />
-<col width="8%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Field Name</th>
-<th class="head">Type (Format)</th>
-<th class="head">Description</th>
-<th class="head">Required?</th>
-<th class="head">Unique?</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>id</td>
-<td>string</td>
-<td>Each contact must have a unique identifier</td>
-<td>True</td>
-<td>False</td>
-</tr>
-<tr class="row-odd"><td>organization_id</td>
-<td>string</td>
-<td>The identifier of the organization for which this is a contact</td>
-<td>False</td>
-<td>False</td>
-</tr>
-<tr class="row-even"><td>service_id</td>
-<td>string</td>
-<td>The identifier of the service for which this is a contact</td>
-<td>False</td>
-<td>False</td>
-</tr>
-<tr class="row-odd"><td>service_at_location_id</td>
-<td>string</td>
-<td>The identifier of the 'service at location' table entry, when this contact is specific to a service in a particular location.</td>
-<td>False</td>
-<td>False</td>
-</tr>
-<tr class="row-even"><td>name</td>
-<td>string</td>
-<td>The name of the person</td>
-<td>False</td>
-<td>False</td>
-</tr>
-<tr class="row-odd"><td>title</td>
-<td>string</td>
-<td>The job title of the person</td>
-<td>False</td>
-<td>False</td>
-</tr>
 <tr class="row-even"><td>department</td>
 <td>string</td>
-<td>The department that the person is part of</td>
-<td>False</td>
-<td>False</td>
-</tr>
-<tr class="row-odd"><td>email</td>
-<td>string (email)</td>
-<td>The email address of the person</td>
+<td>(Deprecated) The department for which this is the phone number. This field is deprecated and will be removed in a future version of HSDS.</td>
 <td>False</td>
 <td>False</td>
 </tr>
@@ -1039,19 +939,13 @@
 <td>False</td>
 <td>False</td>
 </tr>
-<tr class="row-odd"><td>state_province</td>
-<td>string</td>
-<td>The state or province in which the address is located.</td>
-<td>True</td>
-<td>False</td>
-</tr>
-<tr class="row-even"><td>postal_code</td>
+<tr class="row-odd"><td>postal_code</td>
 <td>string</td>
 <td>The postal code for the address.</td>
 <td>True</td>
 <td>False</td>
 </tr>
-<tr class="row-odd"><td>country</td>
+<tr class="row-even"><td>country</td>
 <td>string</td>
 <td>The country in which the address is located. This should be given as an ISO 3361-1 country code (two letter abbreviation).</td>
 <td>True</td>
@@ -1062,7 +956,7 @@
 </div>
 <div class="section" id="postal_address">
 <h3>postal_address<a class="headerlink" href="#postal_address" title="Permalink to this headline">¶</a></h3>
-<p>The postal_address table contains the postal addresses for mail to a certain location. This may differ from the physical location.</p>
+<p>OUT OF SCOPE? - The postal_address table contains the postal addresses for mail to a certain location. This may differ from the physical location.</p>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="50%" />
@@ -1177,7 +1071,7 @@
 </div>
 <div class="section" id="regular_schedule">
 <h3>regular_schedule<a class="headerlink" href="#regular_schedule" title="Permalink to this headline">¶</a></h3>
-<p>The regular_schedule table contains details of when a service or location is open under normal circumstances. Each entry in the table can relate to one and only one day of the week.</p>
+<p>OUT OF SCOPE? - The regular_schedule table contains details of when a service or location is open under normal circumstances. Each entry in the table can relate to one and only one day of the week.</p>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="50%" />
@@ -1262,7 +1156,7 @@
 </div>
 <div class="section" id="holiday_schedule">
 <h3>holiday_schedule<a class="headerlink" href="#holiday_schedule" title="Permalink to this headline">¶</a></h3>
-<p>The holiday_schedule table contains details of when a service or location is open during holidays. Each entry in the table describes a period of one or more days, and the operating times on those days.</p>
+<p>OUT OF SCOPE? - The holiday_schedule table contains details of when a service or location is open during holidays. Each entry in the table describes a period of one or more days, and the operating times on those days.</p>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="50%" />
@@ -1357,76 +1251,9 @@
 </tbody>
 </table>
 </div>
-<div class="section" id="funding">
-<h3>funding<a class="headerlink" href="#funding" title="Permalink to this headline">¶</a></h3>
-<p>The funding table describes the sources of funding for a service or organisation</p>
-<table border="1" class="colwidths-given docutils">
-<colgroup>
-<col width="50%" />
-<col width="50%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>name</td>
-<td>funding</td>
-</tr>
-<tr class="row-even"><td>path</td>
-<td>funding.csv</td>
-</tr>
-<tr class="row-odd"><td>format</td>
-<td>csv</td>
-</tr>
-<tr class="row-even"><td>mediatype</td>
-<td>text/csv</td>
-</tr>
-</tbody>
-</table>
-<table border="1" class="colwidths-given docutils">
-<colgroup>
-<col width="17%" />
-<col width="17%" />
-<col width="50%" />
-<col width="8%" />
-<col width="8%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Field Name</th>
-<th class="head">Type (Format)</th>
-<th class="head">Description</th>
-<th class="head">Required?</th>
-<th class="head">Unique?</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>id</td>
-<td>string</td>
-<td>Each entry must have a unique identifier</td>
-<td>True</td>
-<td>False</td>
-</tr>
-<tr class="row-odd"><td>organization_id</td>
-<td>string</td>
-<td>The identifier of the organization in receipt of this funding.</td>
-<td>False</td>
-<td>False</td>
-</tr>
-<tr class="row-even"><td>service_id</td>
-<td>string</td>
-<td>The identifier of the service in receipt of this funding</td>
-<td>False</td>
-<td>False</td>
-</tr>
-<tr class="row-odd"><td>source</td>
-<td>string</td>
-<td>A free text description of the source of funds for this organization or service.</td>
-<td>False</td>
-<td>False</td>
-</tr>
-</tbody>
-</table>
-</div>
 <div class="section" id="eligibility">
 <h3>eligibility<a class="headerlink" href="#eligibility" title="Permalink to this headline">¶</a></h3>
-<p>The eligibility tables contains details of the eligibility criteria for particular services</p>
+<p>OUT OF SCOPE? - The eligibility tables contains details of the eligibility criteria for particular services</p>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="50%" />
@@ -1546,6 +1373,18 @@
 <tr class="row-odd"><td>description</td>
 <td>string</td>
 <td>A more detailed description of this service area. Used to provide any additional information that cannot be communicated using the structured area and geometry fields.</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr class="row-even"><td>identifier</td>
+<td>string</td>
+<td>The identifier for the given boundary.</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr class="row-odd"><td>type</td>
+<td>string</td>
+<td>The type of boundary.</td>
 <td>False</td>
 <td>False</td>
 </tr>
@@ -2052,7 +1891,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="changes.html" class="btn btn-neutral float-right" title="Changes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="changes.html" class="btn btn-neutral float-right" title="Proposed adapations for Open Community" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="about.html" class="btn btn-neutral" title="About HSDS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
