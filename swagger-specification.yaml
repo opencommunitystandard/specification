@@ -1024,6 +1024,8 @@ definitions:
         type: string
     required:
       - id
+      - location_id
+      - accessibility
   contact:
     description: 'Details of the named contacts for services and organizations.'
     properties:
@@ -1039,20 +1041,21 @@ definitions:
       service_at_location_id:
         description: 'The identifier of the ‘service at location’ table entry, when this contact is specific to a service in a particular location.'
         type: string
-      name:
-        description: 'The name of the person.'
-        type: string
       title:
         description: 'The job title of the person.'
-        type: string
-      department:
-        description: 'The department that the person is part of.'
         type: string
       email:
         description: 'The email address of the person.'
         type: string
+      phones:
+        type: "array"
+        items:
+          $ref: "#/definitions/phone"
     required:
       - id
+      - title
+      - email
+      - phones
   contact_complete:
     description: Full details about a contact.
     properties:
@@ -1074,9 +1077,6 @@ definitions:
       title:
         description: 'The job title of the person.'
         type: string
-      department:
-        description: 'The department that the person is part of.'
-        type: string
       email:
         description: 'The email address of the person.'
         type: string
@@ -1086,6 +1086,10 @@ definitions:
           $ref: "#/definitions/phone"
     required:
       - id
+      - name
+      - title
+      - email
+      - phones
   eligibility:
     description: 'Details of eligibility criteria for particular services'
     properties:
@@ -1098,8 +1102,19 @@ definitions:
       eligibility:
         description: 'The rules or guidelines that determine who can receive the service.'
         type: string
+      minimum_age:
+        description: 'The minimun age required to meet this eligibility requirement.'
+        type: integer
+      maximum_age:
+        description: 'The maximum age required to meet this eligibility requirement.'
+        type: integer
+      gender:
+        description: 'Gender restriction required to meet this eligibility requirement.'
+        type: string
     required:
       - id
+      - eligibility
+      - service_id
   fee:
     description: 'Details of charges imposed by services'
     properties:
@@ -1163,6 +1178,7 @@ definitions:
         type: string
     required:
       - id
+      - service_id
   language:
     description: 'Details of the languages that are spoken at locations or services. This does not include languages which can only be used with intepretation.'
     properties:
@@ -1211,6 +1227,8 @@ definitions:
     required:
       - id
       - name
+      - organization_id
+      - physical_address
   location_complete:
     description: 'Full location details of an organization.'
     properties:
@@ -1272,6 +1290,8 @@ definitions:
           $ref: "#/definitions/accessibility_for_disabilities"
     required:
       - id
+      - organization_id
+      - physical_address
   organization:
     description: 'Provides basic description and details about each organization delivering services. Each service should be linked to the organization responsible for its delivery. One organization may deliver many services.'
     properties:
@@ -1293,20 +1313,9 @@ definitions:
       url:
         description: 'The URL (website address) of the organization.'
         type: string
-      tax_status:
-        description: 'Government assigned tax designation for for tax-exempt organizations.'
-        type: string
-      tax_id:
-        description: 'A government issued identifier used for the purpose of tax administration.'
-        type: string
-      year_incorporated:
-        description: 'The year in which the organization was legally formed.'
-        type: string
-      legal_status:
-        description: 'The legal status defines the conditions that an organization is operating under; e.g. non-profit, private corporation or a government organization.'
-        type: string
     required:
       - id
+      - name
       - description
   organization_complete:
     description: 'Provides a full description of an organization entity'
@@ -1339,7 +1348,7 @@ definitions:
         description: 'The legal status defines the conditions that an organization is operating under; e.g. non-profit, private corporation or a government organization.'
         type: string
       contacts:
-        description: 'The contacts sub-subresource.'
+        description: 'The contacts sub-resource.'
         type: "array"
         items:
           $ref: "#/definitions/contact"
@@ -1361,6 +1370,7 @@ definitions:
           $ref: "#/definitions/registration"
     required:
       - id
+      - name
       - description
   payment_accepted:
     description: 'Details of the methods of payment that can be used in order to pay for services'
@@ -1376,6 +1386,8 @@ definitions:
         type: string
     required:
       - id
+      - service_id
+      - payment
   phone:
     description: 'Details of the telephone numbers used to contact organizations, services, and locations.'
     properties:
@@ -1406,9 +1418,6 @@ definitions:
       type:
         description: 'Whether the phone number relates to a fixed or cellular phone.'
         type: string
-      department:
-        description: 'The department for which this is the phone number.'
-        type: string
       language:
         description: 'A comma separated list of ISO 639-1, or ISO 639-2 [language codes](available at http://www.loc.gov/standards/iso639-2/php/code_list.php) to represent the languages available from this phone service. The three-letter codes from ISO 639-2 provide greater accuracy when describing variants of languages, which may be relevant to particular communities.'
         type: string
@@ -1433,15 +1442,6 @@ definitions:
       address_1:
         description: 'The first line of the address.'
         type: string
-      address_2:
-        description: 'The second line of the address.'
-        type: string
-      address_3:
-        description: 'The third line of the address.'
-        type: string
-      address_4:
-        description: 'The fourth line of the address.'
-        type: string
       city:
         description: 'The city in which the address is located.'
         type: string
@@ -1456,6 +1456,9 @@ definitions:
         type: string
       country:
         description: 'The country in which the address is located. This should be given as an ISO 3361-1 country code (two letter abbreviation).'
+        type: string
+      uprn:
+        description: 'Unique Property Reference Number (UPRN) used by Ordenance Survery as an identifier.'
         type: string
     required:
       - id
@@ -1479,15 +1482,6 @@ definitions:
       address_1:
         description: 'The first line of the address.'
         type: string
-      address_2:
-        description: 'The second line of the address.'
-        type: string
-      address_3:
-        description: 'The third line of the address.'
-        type: string
-      address_4:
-        description: 'The fourth line of the address.'
-        type: string
       city:
         description: 'The city in which the address is located.'
         type: string
@@ -1505,6 +1499,11 @@ definitions:
         type: string
     required:
       - id
+      - address_1
+      - city
+      - state_province
+      - postal_code
+      - country
   program:
     description: 'Some organizations organise their services into programs. A program brings together a number of related services.'
     properties:
@@ -1518,7 +1517,7 @@ definitions:
         description: 'The name of the program.'
         type: string
       alternate_name:
-        description: 'NeAn alternative name for the program.'
+        description: 'An alternative name for the program.'
         type: string
     required:
       - id
@@ -1616,6 +1615,12 @@ definitions:
       licenses:
         description: 'An organization may have a license issued by a government entity to operate legally. A list of any such licenses can be provided here.'
         type: string
+    required:
+      - id
+      - name
+      - description
+      - organization_id
+      - status
   service_complete:
     description: Full details about a service.
     properties:
@@ -1708,6 +1713,7 @@ definitions:
       - id
       - organization_id
       - name
+      - description
       - status
   service_area:
     description: 'Details of the geographic area for which a service is available.'
@@ -1726,6 +1732,7 @@ definitions:
         type: string
     required:
       - id
+      - service_area
   registration:
     description: "Detail of an organization's registration with a professional or state body."
     properties:
