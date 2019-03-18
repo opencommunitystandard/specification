@@ -33,7 +33,7 @@ The [reference documentation](reference) describes the structure of HSDS data, a
 
    about
    reference
+   Example data <https://opencommunitystandard.github.io/specification/hsds/example-data.html>
    changes
    producing_sharing
-  
    ```

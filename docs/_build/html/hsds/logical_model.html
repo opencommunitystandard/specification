@@ -1,0 +1,379 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Logical Model &mdash; Open Referral Data Specifications 1.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Open Referral Data Specifications 1.1 documentation" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Open Referral Data Specifications
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Open Community - HSDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Human Services Data Specification (HSDS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design_principles.html">Design Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../credits.html">Credits</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Open Referral Data Specifications</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Logical Model</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/hsds/logical_model.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="logical-model">
+<h1>Logical Model<a class="headerlink" href="#logical-model" title="Permalink to this headline">¶</a></h1>
+<p>There are four core tables in HSDS:</p>
+<ol class="simple">
+<li><strong>organization</strong> - that provide services;</li>
+<li><strong>service</strong> - that have descriptions, classifications and other information to allow potential service users to identify those services that can meet their needs;</li>
+<li><strong>location</strong> - where services are delivered - either physically, or virtually (over the phone or Internet);</li>
+<li><strong>service_at_location</strong> - a link table used to record where particular services are available, and to over-ride any default service or location information, with information specific to the service at a specific location.</li>
+</ol>
+<p>Additional information about organisations, locations and services is held in separate tables and linked by a foreign key. Some tables only have a single foreign key for a single core table. Others can be linked to different core tables.</p>
+<p>The table below indicates the foreign keys that exist.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="16%" />
+<col width="10%" />
+<col width="12%" />
+<col width="24%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Table</th>
+<th class="head">organization</th>
+<th class="head">service</th>
+<th class="head">location</th>
+<th class="head">service_at_location</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>programs</td>
+<td>X</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>funding</td>
+<td>X</td>
+<td>X</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>service_taxonomy</td>
+<td>&#160;</td>
+<td>X</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>phone*</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>contact</td>
+<td>X</td>
+<td>X</td>
+<td>&#160;</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td>regular_schedule</td>
+<td>&#160;</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>holiday_schedule</td>
+<td>&#160;</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td>eligibility</td>
+<td>&#160;</td>
+<td>X</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>service_area</td>
+<td>&#160;</td>
+<td>X</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>required_document</td>
+<td>&#160;</td>
+<td>X</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>payment_accepted</td>
+<td>&#160;</td>
+<td>X</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>language</td>
+<td>&#160;</td>
+<td>X</td>
+<td>X</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>physical_address</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>X</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>postal_address</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>X</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>accessibility_for_disabilities</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>X</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<p>*Phone can also be linked to <strong>contact</strong>.</p>
+<p>When a single row contains multiple foreign keys, these will be interpreted as 'OR' relationships.</p>
+<p>E.g. a phone number applies to the service OR the organisation OR the service_at_location.</p>
+<div class="section" id="er-diagram-for-hsds-v-1-1">
+<h2>ER Diagram for HSDS v 1.1<a class="headerlink" href="#er-diagram-for-hsds-v-1-1" title="Permalink to this headline">¶</a></h2>
+<p><img alt="../_images/hsds_er_diagram_v1.1.png" src="../_images/hsds_er_diagram_v1.1.png" />ER Diagram HSDS v1.1</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Open Referral.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+     
+    <a href="../privacy-notice.html">Privacy Notice</a>.
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/custom.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+<script async defer src="https://hypothes.is/embed.js"></script>
+
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//mon.opendataservices.coop/piwik/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '16']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Piwik Code -->
+
+
+</body>
+</html>
