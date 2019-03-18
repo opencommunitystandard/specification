@@ -1,0 +1,642 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Proposed adapations for Open Community &mdash; Open Referral Data Specifications 1.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Open Referral Data Specifications 1.1 documentation" href="../index.html"/>
+        <link rel="up" title="Human Services Data Specification (HSDS)" href="index.html"/>
+        <link rel="next" title="Producing and Sharing Compliant Data" href="producing_sharing.html"/>
+        <link rel="prev" title="HSDS Reference (OpenCommunity Revision)" href="reference.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Open Referral Data Specifications
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Open Community - HSDS</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Human Services Data Specification (HSDS)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="about.html">About HSDS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html">HSDS Reference (OpenCommunity Revision)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Proposed adapations for Open Community</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#organisation">Organisation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#definition">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fields">Fields</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#program">Program</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#service">Service</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Fields</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#contact">Contact</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#phone">Phone</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Fields</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#physical-address">Physical address</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">Fields</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#postal-address">Postal address</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id8">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">Fields</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#regular-schedule">Regular schedule</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id11">Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#holiday-schedule">Holiday schedule</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id12">Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#funding">Funding</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#defintion">Defintion</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#eligibility">Eligibility</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id13">Defintion</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#service-area">Service area</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id14">Defintion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15">Fields</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#required-document">Required document</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id16">Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#payment-acccepted">Payment acccepted</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id17">Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#taxonomy">Taxonomy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id18">Definition</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="producing_sharing.html">Producing and Sharing Compliant Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../design_principles.html">Design Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../credits.html">Credits</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Open Referral Data Specifications</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Human Services Data Specification (HSDS)</a> &raquo;</li>
+        
+      <li>Proposed adapations for Open Community</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/hsds/changes.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="proposed-adapations-for-open-community">
+<h1>Proposed adapations for Open Community<a class="headerlink" href="#proposed-adapations-for-open-community" title="Permalink to this headline">¶</a></h1>
+<p>Changes to the HSDS specification have been documented below.</p>
+<p>To view the full specification reference, <a class="reference external" href="reference.html">see this page</a>. The original HSDS reference is also <a class="reference external" href="http://docs.openreferral.org/en/latest/hsds/reference/">available for comparison</a>.</p>
+<p><strong>Language</strong></p>
+<p>For conformance reasons, US English spellings have been kept. It might be worth evaluating whether this could cause mistakes or inconsistencies if we adopt the HSDS standard.</p>
+<div class="section" id="organisation">
+<h2>Organisation<a class="headerlink" href="#organisation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="definition">
+<h3>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">¶</a></h3>
+<p>The definition for an organisation record provided by Open Referral:</p>
+<blockquote>
+<div><em>The organization record is used to provide basic description and details about each organization delivering services. Each service should be linked to the organization responsible for its delivery. One organization may deliver many services.</em></div></blockquote>
+<p>It will be necessary to define an organisation from the point of view of the Open Community project. This will serve as guidance to those maintaining the service directory data. Propose changing to the following:</p>
+<blockquote>
+<div><em>The organization record is used to provide basic description and details about each organization delivering services. Each service should be linked to the organization most responsible for its delivery. One organization may deliver many services. Organizations do not need to be formally established. An organization may exist as part of a larger organization.</em></div></blockquote>
+<p>The Open Community project appears to be dealing with data on a much more localised scale. We want to know whether the delivery organisation is a Citizens Advice Bureau in our locality, rather than the Citizens Advice overall. I suggest we encourage &quot;organisations&quot; to be recorded at as granular level as possible.</p>
+</div>
+<div class="section" id="fields">
+<h3>Fields<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="tax-status">
+<h4><code class="docutils literal"><span class="pre">tax_status</span></code><a class="headerlink" href="#tax-status" title="Permalink to this headline">¶</a></h4>
+<p>Not a required field, but consider this out of scope of the Open Community project.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;tax_status&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span><span class="s2">&quot;Government assigned tax designation for tax-exempt organizations.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;constraints&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;required&quot;</span><span class="p">:</span><span class="n">false</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="year-incorporated">
+<h4><code class="docutils literal"><span class="pre">year_incorporated</span></code><a class="headerlink" href="#year-incorporated" title="Permalink to this headline">¶</a></h4>
+<p>Out of scope of the Open Community project? Not required, so ignoring is still conformant.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;year_incorporated&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;date&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;%Y&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span><span class="s2">&quot;The year in which the organization was legally formed.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;constraints&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;required&quot;</span><span class="p">:</span><span class="n">false</span>
+    <span class="p">}</span>
+<span class="p">},</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tax-id">
+<h4><code class="docutils literal"><span class="pre">tax_id</span></code><a class="headerlink" href="#tax-id" title="Permalink to this headline">¶</a></h4>
+<p>Tax ids don't have the same relevance or use in the UK. However, an incorporation code or similar may be relevant. This field is not obligatory so ignoring/removing keeps us in conformance. Instead of this field, see the proposed <code class="docutils literal"><span class="pre">register_</span></code> fields below.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;tax_id&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span><span class="s2">&quot;A government issued identifier used for the purpose of tax administration.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;constraints&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;required&quot;</span><span class="p">:</span><span class="n">false</span>
+    <span class="p">}</span>
+<span class="p">},</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="legal-status">
+<h4><code class="docutils literal"><span class="pre">legal_status</span></code><a class="headerlink" href="#legal-status" title="Permalink to this headline">¶</a></h4>
+<p>Possibly out of scope for Open Community project. Also, <code class="docutils literal"><span class="pre">legal_status</span></code> will likely be captured in the proposed <code class="docutils literal"><span class="pre">register_</span></code> fields below:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;legal_status&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span><span class="s2">&quot;The legal status defines the conditions that an organization is operating under; e.g. non-profit, private corporation or a government organization.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;constraints&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;required&quot;</span><span class="p">:</span><span class="n">false</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="register">
+<h4><code class="docutils literal"><span class="pre">register</span></code><a class="headerlink" href="#register" title="Permalink to this headline">¶</a></h4>
+<p>A new field. By providing the register we can lookup the organization using the register id (see below). An example could be the Charity Commisison, or Companies House. This field is optional to allow for informal organizations/groups.</p>
+<p>A list of commonly used registers could be provided for the user to select from to cut down number of steps in this process.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;url&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;format&quot;</span><span class="p">:</span><span class="s2">&quot;url&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span><span class="s2">&quot;The name of the body that the organization is registered with.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;constraints&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;required&quot;</span><span class="p">:</span><span class="n">false</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="register-id">
+<h4><code class="docutils literal"><span class="pre">register_id</span></code><a class="headerlink" href="#register-id" title="Permalink to this headline">¶</a></h4>
+<p>The identifier issued to the organization by its main registring body (referenced in <code class="docutils literal"><span class="pre">register_url</span></code>.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;register_id&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span><span class="s2">&quot;The identifier issued to the organization by its main registring body.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;constraints&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;required&quot;</span><span class="p">:</span><span class="n">false</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="program">
+<h2>Program<a class="headerlink" href="#program" title="Permalink to this headline">¶</a></h2>
+<p>Possibly out of scope for the Open Community project? In order to provide a good service directory is it necessary to know how an organisation groups its services? Regardless, <code class="docutils literal"><span class="pre">program</span></code> records are optional.</p>
+</div>
+<div class="section" id="service">
+<h2>Service<a class="headerlink" href="#service" title="Permalink to this headline">¶</a></h2>
+<p>Like organisations, it will be necessary to define what a service is from the point of view of the Open Community project.</p>
+<p>Is a service simply something that increases someones wellbeing? Does an app or a blog count?</p>
+<div class="section" id="id1">
+<h3>Definition<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><em>Services are provided by organizations to a range of different groups. Details on where each service is delivered are contained in the services_at_location table.</em></div></blockquote>
+</div>
+<div class="section" id="id2">
+<h3>Fields<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="status">
+<h4><code class="docutils literal"><span class="pre">status</span></code><a class="headerlink" href="#status" title="Permalink to this headline">¶</a></h4>
+<p>No changes proposed. However, raises question of how Open Community should approach historical entries? Should they be stored at all?</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;status&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The current status of the service (active/inactive/defunct/temporarily closed).&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;constraints&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;active&quot;</span><span class="p">,</span> <span class="s2">&quot;inactive&quot;</span><span class="p">,</span> <span class="s2">&quot;defunct&quot;</span><span class="p">,</span> <span class="s2">&quot;temporarily closed&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;required&quot;</span><span class="p">:</span><span class="n">true</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="contact">
+<h2>Contact<a class="headerlink" href="#contact" title="Permalink to this headline">¶</a></h2>
+<p>Removed. Do not believe this is within the scope of the Open Community project.</p>
+<div class="section" id="id3">
+<h3>Definition<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><em>The contact table contains details of the named contacts for services and organizations. Note that in the HSDS data package format, if an individual is the contact for multiple services, their details may be duplicated multiple times in this table, each time with a new identifier, and with the rows containing different service ids.</em></div></blockquote>
+</div>
+</div>
+<div class="section" id="phone">
+<h2>Phone<a class="headerlink" href="#phone" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h3>Definition<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><em>The addresses table contains the physical addresses for locations.</em></div></blockquote>
+</div>
+<div class="section" id="id5">
+<h3>Fields<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="contact-id">
+<h4><code class="docutils literal"><span class="pre">contact_id</span></code><a class="headerlink" href="#contact-id" title="Permalink to this headline">¶</a></h4>
+<p>Removed as contact object has been removed (see above).</p>
+</div>
+</div>
+</div>
+<div class="section" id="physical-address">
+<h2>Physical address<a class="headerlink" href="#physical-address" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h3>Definition<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><em>The addresses table contains the physical addresses for locations.</em></div></blockquote>
+</div>
+<div class="section" id="id7">
+<h3>Fields<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="state-province">
+<h4><code class="docutils literal"><span class="pre">state_province</span></code><a class="headerlink" href="#state-province" title="Permalink to this headline">¶</a></h4>
+<p>Removed. Confusing term for viewers in the UK. Addressing in the UK can easily be achieved with 3 lines so enforcing causes unecessary work in terms of data entry.</p>
+<p>If we need to convert to a fully HSDS conformant format, I suggest copying the contents of the <code class="docutils literal"><span class="pre">city</span></code> field into <code class="docutils literal"><span class="pre">state_province</span></code>.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;state_province&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The state or province in which the address is located.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;constraints&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;required&quot;</span><span class="p">:</span><span class="n">true</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="postal-address">
+<h2>Postal address<a class="headerlink" href="#postal-address" title="Permalink to this headline">¶</a></h2>
+<p>Possibly out of scope for a service directory? By including postal address we could be asking for a lot more data than is required.</p>
+<div class="section" id="id8">
+<h3>Definition<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><em>The postal_address table contains the postal addresses for mail to a certain location. This may differ from the physical location.</em></div></blockquote>
+</div>
+<div class="section" id="id9">
+<h3>Fields<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id10">
+<h4><code class="docutils literal"><span class="pre">state_province</span></code><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+<p>Removed. Same as in <code class="docutils literal"><span class="pre">physical_address</span></code> (see above).</p>
+</div>
+</div>
+</div>
+<div class="section" id="regular-schedule">
+<h2>Regular schedule<a class="headerlink" href="#regular-schedule" title="Permalink to this headline">¶</a></h2>
+<p>Possibly out of scope? Depends whether Open Community data only covers the existence of services, or whether it should detail how to access them in detail. Also worth asking whether the directory providers should task themselves with maintaing this data.</p>
+<div class="section" id="id11">
+<h3>Definition<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><em>The regular_schedule table contains details of when a service or location is open under normal circumstances. Each entry in the table can relate to one and only one day of the week.</em></div></blockquote>
+</div>
+</div>
+<div class="section" id="holiday-schedule">
+<h2>Holiday schedule<a class="headerlink" href="#holiday-schedule" title="Permalink to this headline">¶</a></h2>
+<p>Possibly out of scope? Also worth asking whether directory providers should task themselves with maintaing this data.</p>
+<div class="section" id="id12">
+<h3>Definition<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><em>The holiday_schedule table contains details of when a service or location is open during holidays. Each entry in the table describes a period of one or more days, and the operating times on those days.</em></div></blockquote>
+</div>
+</div>
+<div class="section" id="funding">
+<h2>Funding<a class="headerlink" href="#funding" title="Permalink to this headline">¶</a></h2>
+<p>Removed as this out of scope for a directory of services.</p>
+<div class="section" id="defintion">
+<h3>Defintion<a class="headerlink" href="#defintion" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><em>The funding table describes the sources of funding for a service or organisation.</em></div></blockquote>
+</div>
+</div>
+<div class="section" id="eligibility">
+<h2>Eligibility<a class="headerlink" href="#eligibility" title="Permalink to this headline">¶</a></h2>
+<p>Possibly out of scope? Depends whether Open Community data only covers the existence of services, or whether it should detail how to access them in detail. Also worth asking whether the directory providers should task themselves with maintaing this data.</p>
+<p>Also, propose flattening this into service object for simplicity.</p>
+<div class="section" id="id13">
+<h3>Defintion<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><em>The eligibility tables contains details of the eligibility criteria for particular services.</em></div></blockquote>
+</div>
+</div>
+<div class="section" id="service-area">
+<h2>Service area<a class="headerlink" href="#service-area" title="Permalink to this headline">¶</a></h2>
+<p>In order to ensure compatability, it is advisable to have a pre-defined list of boundaries to select from. This is how service area selection works for the <a class="reference external" href="https://www.aliss.org/api/v4/service-areas/">ALISS project</a>.</p>
+<div class="section" id="id14">
+<h3>Defintion<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><em>The service_area table contains details of the geographic area for which a service is available.</em></div></blockquote>
+</div>
+<div class="section" id="id15">
+<h3>Fields<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="identifier">
+<h4><code class="docutils literal"><span class="pre">identifier</span></code><a class="headerlink" href="#identifier" title="Permalink to this headline">¶</a></h4>
+<p>It's likely Open Community will use administrative boundary areas e.g. <a class="reference external" href="https://geoportal.statistics.gov.uk/datasets/ae90afc385c04d869bc8cf8890bd1bcd_1">local authority boundaries</a>. These have identifiers that can be used for geographic lookups and other purposes. For example <code class="docutils literal"><span class="pre">E06000009</span></code> (Blackpool).</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;identifier&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The identifier for the given boundary.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="type">
+<h4><code class="docutils literal"><span class="pre">type</span></code><a class="headerlink" href="#type" title="Permalink to this headline">¶</a></h4>
+<p>The type of boundary the service area represents e.g. &quot;Local Authority District&quot;.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;type&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The type of boundary.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="required-document">
+<h2>Required document<a class="headerlink" href="#required-document" title="Permalink to this headline">¶</a></h2>
+<p>Possibly out of scope for the Open Community project?</p>
+<div class="section" id="id16">
+<h3>Definition<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><em>The required_document table contains details of any documents that are required in order to access or use services.</em></div></blockquote>
+</div>
+</div>
+<div class="section" id="payment-acccepted">
+<h2>Payment acccepted<a class="headerlink" href="#payment-acccepted" title="Permalink to this headline">¶</a></h2>
+<p>Possibly out of scope for the Open Community project?</p>
+<div class="section" id="id17">
+<h3>Definition<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><em>The payment_accepted table contains details of the methods of payment that can be used in order to pay for services.</em></div></blockquote>
+</div>
+</div>
+<div class="section" id="taxonomy">
+<h2>Taxonomy<a class="headerlink" href="#taxonomy" title="Permalink to this headline">¶</a></h2>
+<p>HSDS provides a flexible taxonomy structure meaning we can use any set of categories we deem appropriate. Open Community could set a pre-defined list of categories, or, it could leave taxonomy out of scope, and leave it open for individual service providers to decide.</p>
+<div class="section" id="id18">
+<h3>Definition<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><em>Each service can be categorized according to one or more taxonomy terms. The taxonomy table contains a list of taxonomy identifiers, their names, and, for hierarchical taxonomies, their structure.</em></div></blockquote>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="producing_sharing.html" class="btn btn-neutral float-right" title="Producing and Sharing Compliant Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="reference.html" class="btn btn-neutral" title="HSDS Reference (OpenCommunity Revision)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Open Referral.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+     
+    <a href="../privacy-notice.html">Privacy Notice</a>.
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/custom.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+<script async defer src="https://hypothes.is/embed.js"></script>
+
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//mon.opendataservices.coop/piwik/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '16']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Piwik Code -->
+
+
+</body>
+</html>
