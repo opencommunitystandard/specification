@@ -16,35 +16,144 @@
         <h2>Example JSON</h2>
 
         <textarea id="input">{
-  "name": "json.human",
-  "description": "Convert\n JSON to human readable\r HTML",
-  "author": "Mariano Guerra <mariano@marianoguerra.org>",
-  "tags": ["DOM", "HTML", "JSON", "Pretty Print"],
-  "version": "0.1.0",
-  "main": "json.human.js",
-  "license" : "MIT",
-  "dependencies": {
-      "crel": "1.0.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/marianoguerra/json.human.js.git"
-  },
-  "bugs": {
-    "url": "http://github.com/marianoguerra/json.human.js/issues"
-  },
-  "contributors": [],
-  "config": {
-    "what?": "this object is just to show some extra stuff",
-    "how?": ["add json.human.js", "add json.human.css", "???", "profit!"],
-    "customization?": ["customize the css prefix", "change the css file"],
-    "integer": 42,
-    "float": 12.3,
-    "bool": true,
-    "emptyString": "",
-    "emptyArray": [],
-    "emptyObject": {},
-    "htmlEntities": "   <- trailing <em>   & </em> and some html   "
+  "organization" : {
+    "id" : "oooo-1234-1234-1234-1234",
+    "name" : "My Example Organisation",
+    "alternate_name" : "ExamplOrg",
+    "description" : "My Example Organisation helps developers explain schemas",
+    "email" : "info@examplorg.com",
+    "url" : "https://examplorg.org.uk",
+    "year_incorporated" : "2001",
+    "legal_status" : "Registred Charity",
+    "contacts" : [
+      {
+        "id" : "cccc-1234-1234-1234",
+        "organization_id" : "oooo-1234-1234-1234",
+        "name" : "Gerald Joe",
+        "title" : "Community Manager",
+        "email" : "community-manager@examplorg.org.uk",
+        "phones" : []
+      }
+    ],
+    "locations" : [
+      {
+        "id" : "llll-1234-1234-1234",
+        "organization_id" : "oooo-1234-1234-1234",
+        "name" : "ExamplOrg Garage",
+        "alternate_name" : "",
+        "description" : "ExamplOrg Garage is a collection of training rooms and presentation space.",
+        "transportation" : "5 minutes walk from the Tall Pines bus stop",
+        "latitude" : "51.000",
+        "longitude" : "-3.1234",
+        "regular_schedule" : [
+          {
+            "id" : "rsrs-1234-1234-1234",
+            "location_id" : "llll-1234-1234-1234",
+            "weekday" : "Monday",
+            "opens_at" : "09:00:00",
+            "closes_at" : "17:00:00"
+          },
+          {
+            "id" : "rsrs-2234-1234-1234",
+            "location_id" : "llll-1234-1234-1234",
+            "weekday" : "Tuesday",
+            "opens_at" : "12:00:00",
+            "closes_at" : "17:00:00"
+          }
+        ],
+        "holiday_schedule" : [
+          {
+            "id" : "hshs-2234-1234-1234",
+            "location_id" : "llll-1234-1234-1234",
+            "closed" : true,
+            "start_date" : "2019-12-20",
+            "end_date" : "2020-01-04"
+          }
+        ],
+        "languages" : [],
+        "postal_address" : [],
+        "physical_address" : [
+          {
+            "id" : "papa-1234-1234-1234",
+            "location_id" : "llll-1234-1234-1234",
+            "attention" : null,
+            "address_1" : "4/1",
+            "city" : "London",
+            "region" : "Hackney",
+            "state_province" : "Greater London",
+            "postal_code" : "E1 6DB",
+            "country" : "GB",
+            "uprn" : "200010019924"
+          }
+        ],
+        "phones" : [
+          {
+            "id" : "phph-1234-1234-1234",
+            "location_id" : "llll-1234-1234-1234",
+            "number" : "",
+            "extension" : null,
+            "type" : "fixed",
+            "language" : "ENG",
+            "description" : "Reception phone"
+          }
+        ],
+        "accessibility_for_disabilities" : [
+          {
+            "id" : "adad-1234-1234-1234",
+            "location_id" : "llll-1234-1234-1234",
+            "accessibility" : "disabled_parking",
+            "details" : "There are 4 disability parking bays in the car park."
+          }
+        ]
+      }
+    ],
+    "programs" : [],
+    "services" : [
+      {
+        "id" : "ssss-1234-1234-1234",
+        "organization_id" : "oooo-1234-1234-1234",
+        "program_id" : null,
+        "location_id" : "llll-1234-1234-1234",
+        "name" : "Example Data Advice",
+        "alternate_name" : null,
+        "description" : "A drop-in advice service. Come in to the garage and ask one of our advisors for help any time we're open.",
+        "url" : "https://examplorg.org.uk/advice",
+        "email" : null,
+        "status" : "active",
+        "interpretation_services" : null,
+        "application_process" : null,
+        "wait_time" : "Our target is a maximum 30 minute wait time",
+        "accreditations" : null,
+        "licenses" : null,
+        "contacts" : [],
+        "eligibility" : [
+          {
+            "id" : "elel-1234-1234-1234",
+            "service_id" : "ssss-1234-1234-1234",
+            "eligibility" : "For anyone over 18",
+            "minimum_age" : 18,
+            "maximum_age" : null,
+            "gender" : null
+          }
+        ],
+        "fees" : [],
+        "regular_schedule" : [],
+        "holiday_schedule" : [],
+        "languages" : [],
+        "payment_accepted" :[],
+        "phones" : [],
+        "required_documents" : [],
+        "service_area" : []
+      }
+    ],
+    "registrations" : [
+      {
+        "id" : "rrrr-1234-1234-1234",
+        "organization_id" : "oooo-1234-1234-1234#",
+        "register" : "The Charity Commission",
+        "identifier" : "202918"
+      }
+    ]
   }
 }
         </textarea>
