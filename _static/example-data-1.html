@@ -1,0 +1,360 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>Open Community - Example Data</title>
+    <link rel="stylesheet" media="all" href="../_static/css/demo.css" />
+    <link rel="stylesheet" media="all" href="../_static/css/json.human.css" />
+    <link rel="stylesheet" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/3.16.0/codemirror.css" />
+    <style type="text/css">
+      .CodeMirror {
+        height: 60vh;
+        line-height: 1.7;
+      }
+      .jh-type-string { font-style: normal; font-family: sans-serif; font-weight: 300; }
+      .jh-type-object > tbody > tr, .jh-type-array > tbody > tr {  border: 1px solid transparent; }
+    </style>
+  </head>
+
+  <body>
+    <h1>OpenCommunity Standard Examples</h1>
+
+    <p class="project-description">New to the project? Read about it <a href="https://opencommunity.org.uk/" rel="home">here.</a></p>
+
+    <h2>Example JSON</h2>
+
+    <textarea id="input">
+{
+  "organization" : {
+    "id" : "oooo-1234-1234-1234-1234",
+    "name" : "Hackney London Borough Council",
+    "alternate_name" : "Hackney Council",
+    "description" : "Hackney London Borough Council is the local government authority for the London Borough of Hackney",
+    "email" : "info@hackney.gov.uk",
+    "url" : "https://www.hackney.gov.uk/",
+    "year_incorporated" : null,
+    "legal_status" : "London borough council",
+    "registrations" : [
+      {
+        "id" : "rrrr-1234-1234-1234",
+        "organization_id" : "oooo-1234-1234-1234",
+        "register" : "ONS Local Authority Districts",
+        "identifier" : "E09000012"
+      }
+    ],
+    "contacts" : [],
+    "phones" : [
+      {
+      "id" : "phph-1234-1234-1234",
+        "organization_id" : "oooo-1234-1234-1234",
+        "number" : "020 8356 3000",
+        "extension" : null,
+        "type" : "fixed",
+        "language" : "ENG",
+        "description" : "General enquiries"
+      },{
+      "id" : "phph-2234-1234-1234",
+        "organization_id" : "oooo-1234-1234-1234",
+        "number" : "020 8356 3399",
+        "extension" : null,
+        "type" : "fixed",
+        "language" : "ENG",
+        "description" : "Benefits enquiries"
+      }
+    ],
+    "locations" : [
+      {
+        "id" : "llll-1234-1234-1234",
+        "organization_id" : "oooo-1234-1234-1234",
+        "name" : "Hackney Diabetes Centre at Homerton Hospital",
+        "alternate_name" : "",
+        "description" : "Centre supports people with diabetes. The centre acts as a meeting point for our diabetes walks.",
+        "transportation" : "8 minutes walk from Homerton Overground Station",
+        "latitude" : "51.000",
+        "longitude" : "-3.1234",
+        "regular_schedule" : [],
+        "holiday_schedule" : [],
+        "languages" : [],
+        "postal_address" : [],
+        "physical_address" : [
+          {
+            "id" : "papa-1234-1234-1234",
+            "location_id" : "llll-1234-1234-1234",
+            "attention" : null,
+            "address_1" : "Homerton Row",
+            "city" : "London",
+            "region" : "Hackney",
+            "state_province" : "Greater London",
+            "postal_code" : "E9 6SR",
+            "country" : "GB",
+            "uprn" : "200010019925"
+          }
+        ],
+        "phones" : [],
+        "accessibility_for_disabilities" : []
+      },
+      {
+        "id" : "llll-2234-1234-1234",
+        "organization_id" : "oooo-1234-1234-1234",
+        "name" : "Clissold Park",
+        "alternate_name" : "",
+        "description" : "Clissold Park is an open space in Stoke Newington, in the London Borough of Hackney. It is bounded by Greenway Close, Stoke Newington Church Street and Green Lanes and Queen Elizabeth's Walk.",
+        "transportation" : "Accessible by 393 bus",
+        "latitude" : "51.000",
+        "longitude" : "-3.1234",
+        "regular_schedule" : [],
+        "holiday_schedule" : [],
+        "languages" : [],
+        "postal_address" : [],
+        "physical_address" : [
+          {
+            "id" : "papa-2234-1234-1234",
+            "location_id" : "llll-2234-1234-1234",
+            "attention" : null,
+            "address_1" : "Green Lanes",
+            "city" : "London",
+            "region" : "Stoke Newington",
+            "state_province" : "Greater London",
+            "postal_code" : "N16 9HJ",
+            "country" : "GB",
+            "uprn" : "200010019925"
+          }
+        ],
+        "phones" : [],
+        "accessibility_for_disabilities" : []
+      }
+    ],
+    "programs" : [{
+      "id" : "prpr-1234-1234-1234",
+      "organization_id" : "oooo-1234-1234-1234",
+      "name" : "Walkingtogether",
+      "alternate_name" : null
+    }],
+    "services" : [
+      {
+        "id" : "ssss-1234-1234-1234",
+        "organization_id" : "oooo-1234-1234-1234",
+        "program_id" : "prpr-1234-1234-1234",
+        "location_id" : "llll-1234-1234-1234",
+        "name" : "Hackney Diabetes Centre Walk",
+        "alternate_name" : null,
+        "description" : "Low to vigorous intensity walks covering various routes. Please arrive 15 minutes beforehand and wear comfortable shoes. We start from the Hackney Diabetes Centre. New members should arrive 30 minutes early to register.",
+        "url" : "https://hackney.gov.uk/walking",
+        "email" : null,
+        "status" : "active",
+        "interpretation_services" : null,
+        "application_process" : "You'll be asked to complete a registration form before participating.",
+        "wait_time" : null,
+        "accreditations" : null,
+        "licenses" : null,
+        "contacts" : [
+          {
+            "id" : "cccc-1234-1234-1234",
+            "service_id" : "ssss-1234-1234-1234",
+            "name" : "Surbjit Mahey",
+            "title" : null,
+            "email" : "surbjit.mahey@hackney.gov.uk",
+            "phones" : [{
+              "id" : "phph-5234-1234-1234",
+                "contact_id" : "cccc-1234-1234-1234",
+                "number" : "020 8510 7459",
+                "extension" : null,
+                "type" : "fixed",
+                "language" : "ENG",
+                "description" : "For further information on attending a walk, or becoming a walk leader."
+              }
+            ]
+          }
+        ],
+        "eligibility" : [
+          {
+            "id" : "elel-1234-1234-1234",
+            "service_id" : "ssss-1234-1234-1234",
+            "eligibility" : "For anyone with diabetes",
+            "minimum_age" : null,
+            "maximum_age" : null,
+            "gender" : null
+          }
+        ],
+        "fees" : [],
+        "regular_schedule" : [
+          {
+            "id" : "rsrs-1234-1234-1234",
+            "service_id" : "ssss-1234-1234-1234",
+            "weekday" : "Monday",
+            "opens_at" : "10:00:00",
+            "closes_at" : "11:30:00"
+          },
+          {
+            "id" : "rsrs-2234-1234-1234",
+            "service_id" : "ssss-1234-1234-1234",
+            "weekday" : "Wednesday",
+            "opens_at" : "14:00:00",
+            "closes_at" : "15:00:00"
+          }
+        ],
+        "holiday_schedule" : [],
+        "languages" : [],
+        "payment_accepted" :[],
+        "phones" : [{
+          "id" : "phph-3234-1234-1234",
+            "service_id" : "ssss-1234-1234-1234",
+            "number" : "020 8510 5920",
+            "extension" : null,
+            "type" : "fixed",
+            "language" : "ENG",
+            "description" : "Service information from our Diabetes lay educators"
+          },{
+          "id" : "phph-4234-1234-1234",
+            "service_id" : "ssss-1234-1234-1234",
+            "number" : "020 8510 7875",
+            "extension" : null,
+            "type" : "fixed",
+            "language" : "ENG",
+            "description" : "Service information from our diabetes lay educators, (alternative number)"
+          }
+        ],
+        "required_documents" : [],
+        "service_area" : []
+      },
+      {
+        "id" : "ssss-2234-1234-1234",
+        "organization_id" : "oooo-1234-1234-1234",
+        "program_id" : "prpr-1234-1234-1234",
+        "location_id" : null,
+        "service_at_location_id" : "slsl-1234-1234-1234",
+        "service_at_location": {
+          "id" : "slsl-1234-1234-1234",
+          "service_id" : "ssss-2234-1234-1234",
+          "location_id" : "llll-2234-1234-1234",
+          "description" : "Meets outside Clissold House, inside Clissold Park (the bench at the bottom of the slope near the pond)."
+        },
+        "name" : "Clissold Park Health Walk",
+        "alternate_name" : null,
+        "description" : "A moderate intensity health walk starting from Clissold Park. Please arrive 5 minutes beforehand and wear comfortable shoes.",
+        "url" : "https://hackney.gov.uk/walking",
+        "email" : null,
+        "status" : "active",
+        "interpretation_services" : null,
+        "application_process" : null,
+        "wait_time" : null,
+        "accreditations" : null,
+        "licenses" : null,
+        "contacts" : [
+          {
+            "id" : "cccc-1234-1234-1234",
+            "service_id" : "ssss-2234-1234-1234",
+            "name" : "Surbjit Mahey",
+            "title" : null,
+            "email" : "surbjit.mahey@hackney.gov.uk",
+            "phones" : [{
+              "id" : "phph-5234-1234-1234",
+                "contact_id" : "cccc-1234-1234-1234",
+                "number" : "020 8510 7459",
+                "extension" : null,
+                "type" : "fixed",
+                "language" : "ENG",
+                "description" : "For further information on attending a walk, or becoming a walk leader."
+              }
+            ]
+          }
+        ],
+        "eligibility" : [],
+        "fees" : [],
+        "regular_schedule" : [
+          {
+            "id" : "rsrs-1234-1234-1234",
+            "service_id" : "ssss-1234-1234-1234",
+            "weekday" : "Tuesday",
+            "opens_at" : "13:00:00",
+            "closes_at" : "14:00:00"
+          }
+        ],
+        "holiday_schedule" : [],
+        "languages" : [],
+        "payment_accepted" :[],
+        "phones" : [],
+        "required_documents" : [],
+        "service_area" : []
+      },{
+        "id" : "ssss-3234-1234-1234",
+        "organization_id" : "oooo-1234-1234-1234",
+        "program_id" : "prpr-1234-1234-1234",
+        "location_id" : null,
+        "service_at_location_id" : null,
+        "service_at_location": null,
+        "name" : "Themed Walks",
+        "alternate_name" : null,
+        "description" : "We run themed walks covering a variety of topics and locations.",
+        "url" : "https://hackney.gov.uk/walking",
+        "email" : null,
+        "status" : "active",
+        "interpretation_services" : null,
+        "application_process" : null,
+        "wait_time" : null,
+        "accreditations" : null,
+        "licenses" : null,
+        "contacts" : [
+          {
+            "id" : "cccc-1234-1234-1234",
+            "service_id" : "ssss-2234-1234-1234",
+            "name" : "Surbjit Mahey",
+            "title" : null,
+            "email" : "surbjit.mahey@hackney.gov.uk",
+            "phones" : [{
+              "id" : "phph-5234-1234-1234",
+                "contact_id" : "cccc-1234-1234-1234",
+                "number" : "020 8510 7459",
+                "extension" : null,
+                "type" : "fixed",
+                "language" : "ENG",
+                "description" : "For further information on attending a walk, or becoming a walk leader."
+              }
+            ]
+          }
+        ],
+        "eligibility" : [],
+        "fees" : [],
+        "regular_schedule" : [],
+        "holiday_schedule" : [],
+        "languages" : [],
+        "payment_accepted" :[],
+        "phones" : [],
+        "required_documents" : [],
+        "service_area" : [{
+          "code": "E09000012",
+          "type": "Local Authority",
+          "name": "Hackney"
+        }]
+      }
+    ]
+  }
+}
+    </textarea>
+
+    <div class="buttons">
+        <button id="convert">Convert</button>
+    </div>
+
+    <h2>Formatted example</h2>
+
+    <div id="output">
+    </div>
+
+    <h2>Raw HTML</h2>
+    <textarea id="output-raw" style="width: 100%; height: 20em;">
+    </textarea>
+
+    <h2>Time</h2>
+
+    <p>Format Time: <span id="format-time"></span></p>
+    <p>Render Time: <span id="render-time"></span></p>
+
+
+    <h4>Powered by <a href="http://github.com/marianoguerra/json.human.js">json.human.js</a></h4>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/3.16.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/3.16.0/mode/javascript/javascript.min.js" data-main="js/demo"></script>
+    <script src="../_static/js/require.js" data-main="../_static/js/demo"></script>
+  </body>
+</html>
