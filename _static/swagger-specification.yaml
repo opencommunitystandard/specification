@@ -1,0 +1,1803 @@
+swagger: '2.0'
+info:
+  title: "Open Community Data API"
+  description: "This is a specification describing the Open Community Data API, based on the Open Referral Human Services Data Specification (HSDS)."
+  termsOfService: "https://opencommunity.org.uk/"
+  contact:
+    name: Open Community
+    url: https://opencommunity.org.uk/
+    email: tom.dixon@devon.gov.uk
+  license:
+    name: Creative Commons Attribution Share-Alike 4.0
+    url: https://creativecommons.org/licenses/by-sa/4.0/
+  version: v1.2
+host: example.com
+basePath: /
+schemes:
+- http
+produces:
+- application/json
+- text/csv
+paths:
+  /locations/:
+    get:
+      summary: Get all locations
+      description: Returns a list of locations with filtering support
+      operationId: listLocations
+      parameters:
+        - in: query
+          type: string
+          name: query
+          description: A query to filter list by (up to provider to determine what to search)
+        - in: query
+          type: string
+          name: queries
+          description: A comma separate list of queries with specific fields.
+        - in: query
+          type: number
+          name: page
+          default: 0
+          description: The particular page of results.
+        - in: query
+          type: number
+          name: per_page
+          default: 25
+          description: Amount of locations to return per page, up to 100.
+        - in: query
+          type: string
+          name: sort_by
+          default: name
+          description: Which field to sort by.
+        - in: query
+          type: string
+          name: order
+          default: asc
+          description: Which order to sort by (asc,desc).
+      responses:
+        '200':
+          description: Location Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/location"
+        '500':
+          description: Error Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+      tags:
+      - Locations
+    post:
+      summary: Add location
+      description: Creates a new location entry
+      operationId: addLocation
+      parameters:
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/location'
+      security:
+        - appid: []
+        - appkey: []
+      responses:
+        '200':
+          description: Location Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/location"
+        '403':
+          description: No Access Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+        '500':
+          description: Error Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+      tags:
+      - Locations
+  /locations/complete/:
+    get:
+      summary: Get all locations with full details
+      description: Returns a list of locations with full details and filtering support
+      operationId: listLocationsComplete
+      parameters:
+        - in: query
+          type: string
+          name: query
+          description: A query to filter list by (up to provider to determine what to search)
+        - in: query
+          type: string
+          name: queries
+          description: A comma separate list of queries with specific fields.
+        - in: query
+          type: number
+          name: page
+          default: 0
+          description: The particular page of results.
+        - in: query
+          type: number
+          name: per_page
+          default: 25
+          description: Number of records to return per page, up to 100.
+        - in: query
+          type: string
+          name: sort_by
+          default: name
+          description: Which field to sort by.
+        - in: query
+          type: string
+          name: order
+          default: asc
+          description: Which order to sort by (asc,desc).
+      responses:
+        '200':
+          description: Location Complete Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/location_complete"
+        '500':
+          description: Error Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+      tags:
+      - Locations
+    post:
+      summary: Add location with full details
+      description: Creates a new location entry with full details
+      operationId: addLocationsComplete
+      parameters:
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/location_complete'
+      security:
+        - appid: []
+        - appkey: []
+      responses:
+        '200':
+          description: Location Complete Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/location_complete"
+        '403':
+          description: No Access Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+        '500':
+          description: Error Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+      tags:
+      - Locations
+  /locations/complete/{location_id}/:
+    get:
+      summary: Get location with full details
+      description: Returns a location entry with full details
+      operationId: getLocationComplete
+      parameters:
+        - in: path
+          required: true
+          type: string
+          name: location_id
+          description: The location id.
+      responses:
+        '200':
+          description: Location Complete Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/location_complete"
+        '500':
+          description: Error Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+      tags:
+      - Locations
+    put:
+      summary: Update location with full details
+      description: Updates a location entry with full details
+      operationId: updateLocationsComplete
+      parameters:
+        - in: path
+          required: true
+          type: string
+          name: location_id
+          description: The location id.
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/location_complete'
+      security:
+        - appid: []
+        - appkey: []
+      responses:
+        '200':
+          description: Location Complete Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/location_complete"
+        '403':
+          description: No Access Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+        '500':
+          description: Error Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+      tags:
+      - Locations
+  /locations/{location_id}/:
+    get:
+      summary: Get location
+      description: Returns a location entry by Id
+      operationId: getLocation
+      parameters:
+        - in: path
+          required: true
+          type: string
+          name: location_id
+          description: The location id.
+      responses:
+        '200':
+          description: Location Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/location"
+        '500':
+          description: Error Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+      tags:
+      - Locations
+    put:
+      summary: Update location
+      description: Updates a location entry
+      operationId: updateLocation
+      parameters:
+        - in: path
+          required: true
+          type: string
+          name: location_id
+          description: 'The unique location id.'
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/location'
+      security:
+        - appid: []
+        - appkey: []
+      responses:
+        '200':
+          description: Location Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/location"
+        '403':
+          description: No Access Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+        '500':
+          description: Error Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+      tags:
+      - Locations
+    delete:
+      summary: Delete location
+      description: Deletes a location entry
+      operationId: deleteLocationComplete
+      parameters:
+        - in: path
+          required: true
+          type: string
+          name: location_id
+          description: The location id.
+      security:
+        - appid: []
+        - appkey: []
+      responses:
+        '200':
+          description: Location Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/location"
+        '403':
+          description: No Access Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+        '500':
+          description: Error Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+      tags:
+      - Locations
+  /organizations/:
+    get:
+      summary: Get list of organizations
+      description: Returns a list of all organizations with filtering support
+      operationId: listOrganizations
+      parameters:
+        - in: query
+          type: string
+          name: query
+          description: A query to filter list by (up to provider to determine what to search)
+        - in: query
+          type: string
+          name: queries
+          description: A comma separate list of queries with specific fields.
+        - in: query
+          type: number
+          name: page
+          default: 0
+          description: The particular page of results.
+        - in: query
+          type: number
+          name: per_page
+          default: 25
+          description: Number of records to return per page, up to 100.
+        - in: query
+          type: string
+          name: sort_by
+          default: name
+          description: Which field to sort by.
+        - in: query
+          type: string
+          name: order
+          default: asc
+          description: Which order to sort by (asc,desc).
+      responses:
+        '200':
+          description: Organization Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/organization"
+        '500':
+          description: Error Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+      tags:
+      - Organizations
+    post:
+      summary: Add organization
+      description: Creates a new organization entry
+      operationId: addOrganization
+      parameters:
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/organization'
+      security:
+        - appid: []
+        - appkey: []
+      responses:
+        '200':
+          description: Organization Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/organization"
+        '403':
+          description: No Access Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+        '500':
+          description: Error Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+      tags:
+      - Organizations
+  /organizations/complete/:
+    get:
+      summary: Get list of organizations with full details
+      description: Returns a list of organizations with full schema and filtering support
+      operationId: listOrganizationsComplete
+      parameters:
+        - in: query
+          type: string
+          name: query
+          description: A query to filter list by (up to provider to determine what to search)
+        - in: query
+          type: string
+          name: queries
+          description: A comma separate list of queries with specific fields.
+        - in: query
+          type: number
+          name: page
+          default: 0
+          description: The particular page of results.
+        - in: query
+          type: number
+          name: per_page
+          default: 25
+          description: Number of records to return per page, up to 100.
+        - in: query
+          type: string
+          name: sort_by
+          default: name
+          description: Which field to sort by.
+        - in: query
+          type: string
+          name: order
+          default: asc
+          description: Which order to sort by (asc,desc).
+      responses:
+        '200':
+          description: Organization Complete Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/organization_complete"
+        '500':
+          description: Error Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+      tags:
+      - Organizations
+    post:
+      summary: Add organization with full details
+      description: Creates a new organization entry with full details
+      operationId: addOrganizationsComplete
+      parameters:
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/organization_complete'
+      security:
+        - appid: []
+        - appkey: []
+      responses:
+        '200':
+          description: Organization Complete Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/organization_complete"
+        '403':
+          description: No Access Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+        '500':
+          description: Error Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+      tags:
+      - Organizations
+  /organizations/complete/{organization_id}/:
+    get:
+      summary: Get organization with full details
+      description: Returns an organization entry with full details by Id
+      operationId: getOrganizationComplete
+      parameters:
+        - in: path
+          required: true
+          type: string
+          name: organization_id
+          description: The organization id.
+      responses:
+        '200':
+          description: Organization Complete Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/organization_complete"
+        '500':
+          description: Error Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+      tags:
+      - Organizations
+    put:
+      summary: Update organization with full details
+      description: Updates an organization entry with full details
+      operationId: updateOrganizationsComplete
+      parameters:
+        - in: path
+          required: true
+          type: string
+          name: organization_id
+          description: The organization id.
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/organization_complete'
+      security:
+        - appid: []
+        - appkey: []
+      responses:
+        '200':
+          description: Organization Complete Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/organization_complete"
+        '403':
+          description: No Access Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+        '500':
+          description: Error Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+      tags:
+      - Organizations
+  /organizations/{organization_id}/:
+    get:
+      summary: Get organization
+      description: Returns a specific organization entry by Id
+      operationId: getOrganization
+      parameters:
+        - in: path
+          required: true
+          type: string
+          name: organization_id
+          description: The organization id.
+      responses:
+        '200':
+          description: Organization Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/organization"
+        '500':
+          description: Error Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+      tags:
+      - Organizations
+    put:
+      summary: Update organization
+      description: Updates an organization entry
+      operationId: updateOrganization
+      parameters:
+        - in: path
+          required: true
+          type: string
+          name: organization_id
+          description: 'The unique organization id.'
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/organization'
+      security:
+        - appid: []
+        - appkey: []
+      responses:
+        '200':
+          description: Organization Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/organization"
+        '403':
+          description: No Access Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+        '500':
+          description: Error Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+      tags:
+      - Organizations
+    delete:
+      summary: Delete organization
+      description: Deletes an organization entry
+      operationId: deleteOrganizationComplete
+      parameters:
+        - in: path
+          required: true
+          type: string
+          name: organization_id
+          description: The organization id.
+      tags:
+      - Organizations
+      security:
+        - appid: []
+        - appkey: []
+      responses:
+        '200':
+          description: Organization Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/organization"
+        '403':
+          description: No Access Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+        '500':
+          description: Error Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+  /services/:
+    get:
+      summary: Get all services
+      description: Returns a full list of services with filtering support
+      operationId: listServices
+      parameters:
+        - in: query
+          type: string
+          name: query
+          description: A query to filter list by (up to provider to determine what to search)
+        - in: query
+          type: string
+          name: queries
+          description: A comma separate list of queries with specific fields.
+        - in: query
+          type: number
+          name: page
+          default: 0
+          description: The particular page of results.
+        - in: query
+          type: number
+          name: per_page
+          default: 25
+          description: Number of records return per page, up to 100.
+        - in: query
+          type: string
+          name: sort_by
+          default: name
+          description: Which field to sort by.
+        - in: query
+          type: string
+          name: order
+          default: asc
+          description: Which order to sort by (asc,desc).
+      responses:
+        '200':
+          description: Service Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/service"
+        '500':
+          description: Error Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+      tags:
+      - Services
+    post:
+      summary: Add service
+      description: Creates a new service entry
+      operationId: addService
+      parameters:
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/service'
+      security:
+        - appid: []
+        - appkey: []
+      responses:
+        '200':
+          description: Service Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/service"
+        '403':
+          description: No Access Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+        '500':
+          description: Error Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+      tags:
+      - Services
+  /services/complete/:
+    get:
+      summary: Get all services with full details
+      description: Returns a list of services with full details and filtering support
+      operationId: listServicesComplete
+      parameters:
+        - in: query
+          type: string
+          name: query
+          description: A query to filter list by (up to provider to determine what to search)
+        - in: query
+          type: string
+          name: queries
+          description: A comma separate list of queries with specific fields.
+        - in: query
+          type: number
+          name: page
+          default: 0
+          description: The particular page of results.
+        - in: query
+          type: number
+          name: per_page
+          default: 25
+          description: Number of records to return per page, up to 100.
+        - in: query
+          type: string
+          name: sort_by
+          default: name
+          description: Which field to sort by.
+        - in: query
+          type: string
+          name: order
+          default: asc
+          description: Which order to sort by (asc,desc).
+      responses:
+        '200':
+          description: Service Complete Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/service_complete"
+        '500':
+          description: Error Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+      tags:
+      - Services
+    post:
+      summary: Add service with full details
+      description: Creates a new service entry with full details
+      operationId: addServicesComplete
+      parameters:
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/service_complete'
+      security:
+        - appid: []
+        - appkey: []
+      responses:
+        '200':
+          description: Service Complete Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/service_complete"
+        '403':
+          description: No Access Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+        '500':
+          description: Error Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+      tags:
+      - Services
+  /services/complete/{service_id}/:
+    get:
+      summary: Get service with full details
+      description: Returns a service entry with full details
+      operationId: getServiceComplete
+      parameters:
+        - in: path
+          required: true
+          type: string
+          name: service_id
+          description: The service id.
+      responses:
+        '200':
+          description: Service Complete Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/service_complete"
+        '500':
+          description: Error Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+      tags:
+      - Services
+    put:
+      summary: Update service with full details
+      description: Updates a service entry with full details
+      operationId: updateServicesComplete
+      parameters:
+        - in: path
+          required: true
+          type: string
+          name: service_id
+          description: The service id.
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/service_complete'
+      security:
+        - appid: []
+        - appkey: []
+      responses:
+        '200':
+          description: Service Complete Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/service_complete"
+        '403':
+          description: No Access Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+        '500':
+          description: Error Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+      tags:
+      - Services
+  /services/{service_id}/:
+    get:
+      summary: Get service
+      description: Returns a specific service entry by Id
+      operationId: getService
+      parameters:
+        - in: path
+          required: true
+          type: string
+          name: service_id
+          description: 'The unique service id.'
+      responses:
+        '200':
+          description: Organization Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/organization"
+        '500':
+          description: Error Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+      tags:
+      - Services
+    put:
+      summary: Update service
+      description: Updates a service entry
+      operationId: updateService
+      parameters:
+        - in: path
+          required: true
+          type: string
+          name: service_id
+          description: 'The unique service id.'
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/service'
+      security:
+        - appid: []
+        - appkey: []
+      responses:
+        '200':
+          description: Service Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/service"
+        '403':
+          description: No Access Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+        '500':
+          description: Error Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+      tags:
+      - Services
+    delete:
+      summary: Delete service
+      description: Deletes a service entry
+      operationId: deleteServiceComplete
+      parameters:
+        - in: path
+          required: true
+          type: string
+          name: service_id
+          description: 'The unique service id.'
+      tags:
+      - Services
+      security:
+        - appid: []
+        - appkey: []
+      responses:
+        '200':
+          description: Service Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/service"
+        '403':
+          description: No Access Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+        '500':
+          description: Error Response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/error_response"
+securityDefinitions:
+  appid:
+    type: apiKey
+    in: header
+    name: x-appid
+  appkey:
+    type: apiKey
+    in: header
+    name: x-appkey
+definitions:
+  accessibility_for_disabilities:
+    description: 'Details of the arrangements for access to locations for people who have disabilities'
+    properties:
+      id:
+        description: 'Each entry must have a unique identifier.'
+        type: string
+      location_id:
+        description: 'The identifier of the location for which the entry describes the accessibility provision.'
+        type: string
+      accessibility:
+        description: 'Description of assistance or infrastructure that facilitate access to clients with disabilities.'
+        type: string
+      details:
+        description: 'Any further details relating to the relevant accessibility arrangements at this location. E.g. whether advance notice is required to use an accessibility facility.'
+        type: string
+    required:
+      - id
+      - location_id
+      - accessibility
+  contact:
+    description: 'Details of the named contacts for services and organizations.'
+    properties:
+      id:
+        description: 'Each contact must have a unique identifier.'
+        type: string
+      organization_id:
+        description: 'The identifier of the organization for which this is a contact.'
+        type: string
+      service_id:
+        description: 'The identifier of the service for which this is a contact.'
+        type: string
+      service_at_location_id:
+        description: 'The identifier of the ‘service at location’ table entry, when this contact is specific to a service in a particular location.'
+        type: string
+      title:
+        description: 'The job title of the person.'
+        type: string
+      email:
+        description: 'The email address of the person.'
+        type: string
+      personal_data:
+        description: 'Whether this contact includes personal data'
+        type: boolean
+      sensitive_data:
+        description: 'Whether this contact is considered to be sensitive'
+        type: boolean
+      phones:
+        type: "array"
+        items:
+          $ref: "#/definitions/phone"
+    required:
+      - id
+      - title
+      - email
+      - phones
+  contact_complete:
+    description: Full details about a contact.
+    properties:
+      id:
+        description: 'Each contact must have a unique identifier.'
+        type: string
+      organization_id:
+        description: 'The identifier of the organization for which this is a contact.'
+        type: string
+      service_id:
+        description: 'The identifier of the service for which this is a contact.'
+        type: string
+      service_at_location_id:
+        description: 'The identifier of the ‘service at location’ table entry, when this contact is specific to a service in a particular location.'
+        type: string
+      name:
+        description: 'The name of the person.'
+        type: string
+      title:
+        description: 'The job title of the person.'
+        type: string
+      email:
+        description: 'The email address of the person.'
+        type: string
+      phones:
+        type: "array"
+        items:
+          $ref: "#/definitions/phone"
+    required:
+      - id
+      - name
+      - title
+      - email
+      - phones
+  eligibility:
+    description: 'Details of eligibility criteria for particular services'
+    properties:
+      id:
+        description: 'Each entry must have a unique identifier.'
+        type: string
+      service_id:
+        description: 'The identifier of the service for which this entry describes the eligibility criteria.'
+        type: string
+      eligibility:
+        description: 'The rules or guidelines that determine who can receive the service.'
+        type: string
+      minimum_age:
+        description: 'The minimun age required to meet this eligibility requirement.'
+        type: integer
+      maximum_age:
+        description: 'The maximum age required to meet this eligibility requirement.'
+        type: integer
+      gender:
+        description: 'Gender restriction required to meet this eligibility requirement.'
+        type: string
+    required:
+      - id
+      - eligibility
+      - service_id
+  fee:
+    description: 'Details of charges imposed by services'
+    properties:
+      id:
+        description: 'Each entry must have a unique identifier.'
+        type: string
+      service_id:
+        description: 'The identifier of the service for which this entry describes the costs of service.'
+        type: string
+      fee:
+        description: 'A listing of the costs of services, including free ones.'
+        type: string
+    required:
+      - id
+  holiday_schedule:
+    description: 'Details of when a service or location is open during holidays. Each entry in the table describes a period of one or more days, and the operating times on those days.'
+    properties:
+      id:
+        description: 'Each entry must have a unique identifier.'
+        type: string
+      service_id:
+        description: 'The identifier of the service for which this is the holiday schedule.'
+        type: string
+      location_id:
+        description: 'The identifier of the location for which this is the holiday schedule.'
+        type: string
+      service_at_location_id:
+        description: 'The identifier of the ‘service at location’ table entry, when this schedule is specific to a service in a particular location.'
+        type: string
+      closed:
+        description: 'Indicates if a service or location is closed during a public holiday.'
+        type: boolean
+      opens_at:
+        description: 'The time when a service or location opens. This should use HH:MM format and should include timezone information, either adding the suffix ‘Z’ when the date is in UTC, or including an offset from UTC (e.g. 09:00-05:00 for 9am East Coast Time.'
+        type: string
+      closes_at:
+        description: 'The time when a service or location closes. This should use HH:MM format and should include timezone information, either adding the suffix ‘Z’ when the date is in UTC, or including an offset from UTC (e.g. 09:00-05:00 for 9am East Coast Time.'
+        type: string
+      start_date:
+        description: 'The first day that a service or location is closed during a public or private holiday.'
+        type: string
+      end_date:
+        description: 'The last day that a service or location is closed during a public or private holiday.'
+        type: string
+    required:
+      - id
+      - closed
+      - start_date
+      - end_date
+  interpretation_services:
+    description: 'Describes interpretation services offered in different languages'
+    properties:
+      id:
+        description: 'Each service must have a unique identifier.'
+        type: string
+      service_id:
+        description: 'The identifier of the services for which the entry describes the interpretation services available.'
+        type: string
+      language:
+        description: 'Languages, other than English, for which interpretation is available. Languages are listed as ISO639-1 codes.'
+        type: string
+    required:
+      - id
+      - service_id
+  language:
+    description: 'Details of the languages that are spoken at locations or services. This does not include languages which can only be used with intepretation.'
+    properties:
+      id:
+        description: 'Each language must have a unique identifier.'
+        type: string
+      service_id:
+        description: 'The identifier of the service for which the entry describes the languages in which services are delivered.'
+        type: string
+      location_id:
+        description: 'The identifier of the location for which the entry describes the languages in which services are delivered.'
+        type: string
+      language:
+        description: 'Languages, other than English, in which the service is delivered. Languages are listed as ISO639-1 codes..'
+        type: string
+    required:
+      - id
+  location:
+    description: 'Details of the locations where organizations operate. Locations may be virtual, and one organization may have many locations.'
+    type: object
+    properties:
+      id:
+        description: 'Each location must have a unique identifier.'
+        type: string
+      organization_id:
+        description: 'Each location must belong to a single organization. The identifier of the organization should be given here.'
+        type: string
+      name:
+        description: 'The name of the location.'
+        type: string
+      alternate_name:
+        description: 'An alternative name for the location.'
+        type: string
+      description:
+        description: 'A description of this location.'
+        type: string
+      transportation:
+        description: 'A description of the access to public or private transportation to and from the location.'
+        type: string
+      latitude:
+        description: 'Y coordinate of location expressed in decimal degrees in WGS84 datum.'
+        type: string
+      longitude:
+        description: 'X coordinate of location expressed in decimal degrees in WGS84 datum.'
+        type: string
+    required:
+      - id
+      - name
+      - organization_id
+      - physical_address
+  location_complete:
+    description: 'Full location details of an organization.'
+    properties:
+      id:
+        description: 'Each location must have a unique identifier.'
+        type: string
+      organization_id:
+        description: 'Each location must belong to a single organization. The identifier of the organization should be given here.'
+        type: string
+      name:
+        description: 'The name of the location.'
+        type: string
+      alternate_name:
+        description: 'An alternative name for the location.'
+        type: string
+      description:
+        description: 'A description of this location.'
+        type: string
+      transportation:
+        description: 'A description of the access to public or private transportation to and from the location.'
+        type: string
+      latitude:
+        description: 'Y coordinate of location expressed in decimal degrees in WGS84 datum.'
+        type: string
+      longitude:
+        description: 'X coordinate of location expressed in decimal degrees in WGS84 datum.'
+        type: string
+      regular_schedule:
+        type: "array"
+        items:
+          $ref: "#/definitions/regular_schedule"
+      holiday_schedule:
+        type: "array"
+        items:
+          $ref: "#/definitions/holiday_schedule"
+      languages:
+        type: "array"
+        items:
+          $ref: "#/definitions/language"
+      postal_address:
+        type: "array"
+        items:
+          $ref: "#/definitions/postal_address"
+      physical_address:
+        type: "array"
+        items:
+          $ref: "#/definitions/physical_address"
+      phones:
+        type: "array"
+        items:
+          $ref: "#/definitions/phone"
+      service:
+        type: "array"
+        items:
+          $ref: "#/definitions/service"
+      accessibility_for_disabilities:
+        type: "array"
+        items:
+          $ref: "#/definitions/accessibility_for_disabilities"
+    required:
+      - id
+      - organization_id
+      - physical_address
+  organization:
+    description: 'Provides basic description and details about each organization delivering services. Each service should be linked to the organization responsible for its delivery. One organization may deliver many services.'
+    properties:
+      id:
+        description: 'Each organization must have a unique identifier.'
+        type: string
+      name:
+        description: 'The official or public name of the organization.'
+        type: string
+      alternate_name:
+        description: 'Alternative or commonly used name for the organization.'
+        type: string
+      description:
+        description: 'A brief summary about the organization. It can contain markup such as HTML or Markdown.'
+        type: string
+      email:
+        description: 'The contact e-mail address for the organization.'
+        type: string
+      url:
+        description: 'The URL (website address) of the organization.'
+        type: string
+      last_updated:
+        description: 'The last time the entry was manually updated or checked.'
+        type: string
+        format: date-time
+    required:
+      - id
+      - name
+      - description
+      - last_updated
+  organization_complete:
+    description: 'Provides a full description of an organization entity'
+    properties:
+      id:
+        description: 'Each organization must have a unique identifier.'
+        type: string
+      name:
+        description: 'The official or public name of the organization.'
+        type: string
+      alternate_name:
+        description: 'Alternative or commonly used name for the organization.'
+        type: string
+      description:
+        description: 'A brief summary about the organization. It can contain markup such as HTML or Markdow.'
+        type: string
+      email:
+        description: 'The contact e-mail address for the organization.'
+        type: string
+      url:
+        description: 'The URL (website address) of the organization.'
+        type: string
+      tax_status:
+        description: 'Government assigned tax designation for for tax-exempt organizations.'
+        type: string
+      year_incorporated:
+        description: 'The year in which the organization was legally formed.'
+        type: string
+      legal_status:
+        description: 'The legal status defines the conditions that an organization is operating under; e.g. non-profit, private corporation or a government organization.'
+        type: string
+      contacts:
+        description: 'The contacts sub-resource.'
+        type: "array"
+        items:
+          $ref: "#/definitions/contact"
+      locations:
+        type: "array"
+        items:
+          $ref: "#/definitions/location"
+      programs:
+        type: "array"
+        items:
+          $ref: "#/definitions/program"
+      services:
+        type: "array"
+        items:
+          $ref: "#/definitions/service"
+      identifiers:
+        type: "array"
+        items:
+          $ref: "#/definitions/identifier"
+    required:
+      - id
+      - name
+      - description
+  payment_accepted:
+    description: 'Details of the methods of payment that can be used in order to pay for services'
+    properties:
+      id:
+        description: 'Each entry must have a unique identifier.'
+        type: string
+      service_id:
+        description: 'The identifier of the services for which the entry describes the accepted payment methods.'
+        type: string
+      payment:
+        description: 'The methods of payment accepted for the service.'
+        type: string
+    required:
+      - id
+      - service_id
+      - payment
+  phone:
+    description: 'Details of the telephone numbers used to contact organizations, services, and locations.'
+    properties:
+      id:
+        description: 'Each entry must have a unique identifier.'
+        type: string
+      location_id:
+        description: 'The identifier of the location where this phone number is located.'
+        type: string
+      service_id:
+        description: 'The identifier of the service for which this is the phone number.'
+        type: string
+      organization_id:
+        description: 'The identifier of the organisation for which this is the phone number.'
+        type: string
+      contact_id:
+        description: 'The identifier of the contact for which this is the phone number.'
+        type: string
+      service_at_location_id:
+        description: 'The identifier of the ‘service at location’ table entry, when this phone number is specific to a service in a particular location.'
+        type: string
+      number:
+        description: 'The phone number.'
+        type: string
+      extension:
+        description: 'The extension of the phone number.'
+        type: string
+      type:
+        description: 'Whether the phone number relates to a fixed or cellular phone.'
+        type: string
+      language:
+        description: 'A comma separated list of ISO 639-1, or ISO 639-2 [language codes](available at http://www.loc.gov/standards/iso639-2/php/code_list.php) to represent the languages available from this phone service. The three-letter codes from ISO 639-2 provide greater accuracy when describing variants of languages, which may be relevant to particular communities.'
+        type: string
+      description:
+        description: 'A description providing extra information about the phone service (e.g. any special arrangements for accessing, or details of availability at particular times.'
+        type: string
+    required:
+      - id
+      - number
+  physical_address:
+    description: 'Describes a physical address of a location'
+    properties:
+      id:
+        description: 'Each physical address must have a unique identifier.'
+        type: string
+      location_id:
+        description: 'The identifier of the location for which this is the address.'
+        type: string
+      attention:
+        description: 'The person or entity whose attention should be sought at the location.'
+        type: string
+      address_1:
+        description: 'The first line of the address.'
+        type: string
+      city:
+        description: 'The city in which the address is located.'
+        type: string
+      region:
+        description: 'The region in which the address is located (optional).'
+        type: string
+      state_province:
+        description: 'The state or province in which the address is located.'
+        type: string
+      postal_code:
+        description: 'The postal code for the address.'
+        type: string
+      country:
+        description: 'The country in which the address is located. This should be given as an ISO 3361-1 country code (two letter abbreviation).'
+        type: string
+      uprn:
+        description: 'Unique Property Reference Number (UPRN) used by Ordenance Survery as an identifier.'
+        type: string
+    required:
+      - id
+      - address_1
+      - city
+      - state_province
+      - postal_code
+      - country
+  postal_address:
+    description: 'Contains the postal addresses for mail to a certain location. This may differ from the physical location.'
+    properties:
+      id:
+        description: 'Each postal address must have a unique identifier.'
+        type: string
+      location_id:
+        description: 'The identifier of the location for which this is the postal address.'
+        type: string
+      attention:
+        description: 'The person or entity for whose attention mail should be marked.'
+        type: string
+      address_1:
+        description: 'The first line of the address.'
+        type: string
+      city:
+        description: 'The city in which the address is located.'
+        type: string
+      region:
+        description: 'The region in which the address is located (optional).'
+        type: string
+      state_province:
+        description: 'The state or province in which the address is located.'
+        type: string
+      postal_code:
+        description: 'The postal code for the address.'
+        type: string
+      country:
+        description: 'The country in which the address is located.'
+        type: string
+    required:
+      - id
+      - address_1
+      - city
+      - state_province
+      - postal_code
+      - country
+  program:
+    description: 'Some organizations organise their services into programs. A program brings together a number of related services.'
+    properties:
+      id:
+        description: 'Each program must have a unique identifier.'
+        type: string
+      organization_id:
+        description: 'Each program must belong to a single organization. The identifier of the organization should be given here.'
+        type: string
+      name:
+        description: 'The name of the program.'
+        type: string
+      alternate_name:
+        description: 'An alternative name for the program.'
+        type: string
+    required:
+      - id
+      - organization_id
+      - name
+  regular_schedule:
+    description: 'Details of when a service or location is open under normal circumstances. Each entry in the table can relate to one and only one day of the week.'
+    properties:
+      id:
+        description: 'Each entry must have a unique identifier.'
+        type: string
+      service_id:
+        description: 'The identifier of the service for which this is the regular schedule.'
+        type: string
+      location_id:
+        description: 'The identifier of the location for which this is the regular schedule.'
+        type: string
+      service_at_location_id:
+        description: 'The identifier of the ‘service at location’ table entry, when this schedule is specific to a service in a particular location.'
+        type: string
+      rrule:
+        description: 'An iCalendar recurrence rule e.g. RRULE:FREQ=MONTHLY;BYDAY=+1FR'
+        type: string
+      recurrence:
+        description: 'A human readable version of the recurrence rule'
+        type: string
+      opens_at:
+        description: 'The time when a service or location opens. This should use HH:MM format and should include timezone information, either adding the suffix ‘Z’ when the date is in UTC, or including an offset from UTC (e.g. 09:00-05:00 for 9am East Coast Time.'
+        type: string
+      closes_at:
+        description: 'The time when a service or location opens. This should use HH:MM format and should include timezone information, either adding the suffix ‘Z’ when the date is in UTC, or including an offset from UTC (e.g. 09:00-05:00 for 9am East Coast Time.'
+        type: string
+    required:
+      - id
+      - opens_at
+      - rrule
+  required_document:
+    description: 'Details of any documents that are required in order to access or use services.'
+    properties:
+      id:
+        description: 'Each document must have a unique identifier.'
+        type: string
+      service_id:
+        description: 'The identifier of the service for which this entry describes the required document.'
+        type: string
+      document:
+        description: 'The document required to apply for or receive the service. e.g. Government-issued ID, EU Passport.'
+        type: string
+    required:
+      - id
+  service:
+    description: 'Services are provided by organizations to a range of different groups. Details on where each service is delivered are contained in the services_at_location table.'
+    properties:
+      id:
+        description: 'Each service must have a unique identifier.'
+        type: string
+      organization_id:
+        description: 'The identifier of the organization that provides this service.'
+        type: string
+      program_id:
+        description: 'The identifier of the program this service is delivered under.'
+        type: string
+      name:
+        description: 'The official or public name of the service.'
+        type: string
+      alternate_name:
+        description: 'Alternative or commonly used name for a service.'
+        type: string
+      description:
+        description: 'A description of the service.'
+        type: string
+      url:
+        description: 'URL of the service.'
+        type: string
+      email:
+        description: 'Email address for the service.'
+        type: string
+      status:
+        description: 'The current status of the service.'
+        type: string
+      interpretation_services:
+        description: 'A description of any interpretation services available for accessing this service.'
+        type: string
+      application_process:
+        description: 'The steps needed to access the service.'
+        type: string
+      wait_time:
+        description: 'Time a client may expect to wait before receiving a service.'
+        type: string
+      fees:
+        description: 'Details of any charges for service users to access this service.'
+        type: string
+      accreditations:
+        description: 'Details of any accreditations. Accreditation is the formal evaluation of an organization or program against best practice standards set by an accrediting organization.'
+        type: string
+      licenses:
+        description: 'An organization may have a license issued by a government entity to operate legally. A list of any such licenses can be provided here.'
+        type: string
+      last_updated:
+        description: 'The last time the entry was manually updated or checked.'
+        type: string
+        format: date-time
+    required:
+      - id
+      - name
+      - description
+      - organization_id
+      - status
+      - last_updated
+  service_complete:
+    description: Full details about a service.
+    properties:
+      id:
+        description: 'Each service must have a unique identifier.'
+        type: string
+      organization_id:
+        description: 'The identifier of the organization that provides this service.'
+        type: string
+      program_id:
+        description: 'The identifier of the program this service is delivered under.'
+        type: string
+      name:
+        description: 'The official or public name of the service.'
+        type: string
+      alternate_name:
+        description: 'Alternative or commonly used name for a service.'
+        type: string
+      description:
+        description: 'A description of the service.'
+        type: string
+      url:
+        description: 'URL of the service.'
+        type: string
+      email:
+        description: 'Email address for the service.'
+        type: string
+      status:
+        description: 'The current status of the service.'
+        type: string
+      interpretation_services:
+        description: 'A description of any interpretation services available for accessing this service.'
+        type: string
+      application_process:
+        description: 'The steps needed to access the service.'
+        type: string
+      wait_time:
+        description: 'Time a client may expect to wait before receiving a service.'
+        type: string
+      accreditations:
+        description: 'Details of any accreditations. Accreditation is the formal evaluation of an organization or program against best practice standards set by an accrediting organization.'
+        type: string
+      licenses:
+        description: 'An organization may have a license issued by a government entity to operate legally. A list of any such licenses can be provided here.'
+        type: string
+      contacts:
+        type: "array"
+        items:
+          $ref: "#/definitions/contact"
+      eligibility:
+        type: "array"
+        items:
+          $ref: "#/definitions/eligibility"
+      fees:
+        type: "array"
+        items:
+          $ref: "#/definitions/fee"
+      regular_schedule:
+        type: "array"
+        items:
+          $ref: "#/definitions/regular_schedule"
+      holiday_schedule:
+        type: "array"
+        items:
+          $ref: "#/definitions/holiday_schedule"
+      languages:
+        type: "array"
+        items:
+          $ref: "#/definitions/language"
+      payment_accepted:
+        type: "array"
+        items:
+          $ref: "#/definitions/payment_accepted"
+      phones:
+        type: "array"
+        items:
+          $ref: "#/definitions/phone"
+      required_documents:
+        type: "array"
+        items:
+          $ref: "#/definitions/required_document"
+      service_area:
+        type: "array"
+        items:
+          $ref: "#/definitions/service_area"
+    required:
+      - id
+      - organization_id
+      - name
+      - description
+      - status
+  service_at_location:
+    description: 'The services at location object creates a link between a service and a specific location.'
+    properties:
+      id:
+        description: 'Each service_at_location must have a unique identifier.'
+        type: string
+      location_id:
+        description: 'The identifier of the location where this service is delivered.'
+        type: string
+      service_id:
+        description: 'The identifier of the service for which this entry describes the service area.'
+        type: string
+      description:
+        description: 'Any additional information that should be displayed to users about the service at this specific location.'
+        type: string
+    required:
+      - id
+      - location_id
+      - service_id
+  service_area:
+    description: 'Details of the geographic area for which a service is available.'
+    properties:
+      id:
+        description: 'Each service area must have a unique identifier.'
+        type: string
+      service_id:
+        description: 'The identifier of the service for which this entry describes the service area.'
+        type: string
+      service_area:
+        description: 'The geographic area where a service is available. This is a free-text description, and so may be precise or indefinite as necessary.'
+        type: string
+      identifier:
+        description: 'The identifier for the given boundary.'
+        type: string
+      type:
+        description: 'The type of boundary the service area represents e.g. "Local Authority District".'
+        type: string
+      description:
+        description: 'A more detailed description of this service area. Used to provide any additional information that cannot be communicated using the structured area and geometry fields.'
+        type: string
+    required:
+      - id
+      - service_area
+  identifier:
+    description: "Detail of an organization's identifier used by an external source."
+    properties:
+      id:
+        description: 'Each entry must have a unique identifier.'
+        type: string
+      organization_id:
+        description: 'The id of the organization this identifier belongs to.'
+        type: string
+      identification_body:
+        description: 'The name of the body that uses or issued the identifier e.g. Companies House.'
+        type: string
+      identifier:
+        description: 'The registration code or identifier issued by the body.'
+        type: string
+    required:
+      - id
+      - organization_id
+      - identification_body
+      - identifier
+  error_response:
+    description: 'Describes an HTTP error returned by the service'
+    properties:
+      code:
+        description: 'Repeat the HTTP status code'
+        type: integer
+      message:
+        description: 'A plain language message explaining the error'
+        type: integer
