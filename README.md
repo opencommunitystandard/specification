@@ -6,6 +6,8 @@ This is a fork of the specification documentation created by the OpenReferral in
 
 Information and notes on the [OpenCommunity project can be found here](https://opencommunity.org.uk/).
 
+These docs are viewable on [Github pages](https://opencommunitystandard.github.io/specification/).
+
 
 ## Licence
 

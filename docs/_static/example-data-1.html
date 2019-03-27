@@ -34,11 +34,12 @@
     "url" : "https://www.hackney.gov.uk/",
     "year_incorporated" : null,
     "legal_status" : "London borough council",
-    "registrations" : [
+    "last_updated" : "2019-03-27T19:26:18.500Z",
+    "identifiers" : [
       {
         "id" : "rrrr-1234-1234-1234",
         "organization_id" : "oooo-1234-1234-1234",
-        "register" : "ONS Local Authority Districts",
+        "identification_body" : "ONS Local Authority Districts",
         "identifier" : "E09000012"
       }
     ],
@@ -147,12 +148,15 @@
         "wait_time" : null,
         "accreditations" : null,
         "licenses" : null,
+        "last_updated" : "2019-03-27T19:26:18.500Z",
         "contacts" : [
           {
             "id" : "cccc-1234-1234-1234",
             "service_id" : "ssss-1234-1234-1234",
             "name" : "Surbjit Mahey",
             "title" : null,
+            "sensitive_data" : false,
+            "personal_data" : true,
             "email" : "surbjit.mahey@hackney.gov.uk",
             "phones" : [{
               "id" : "phph-5234-1234-1234",
@@ -181,14 +185,16 @@
           {
             "id" : "rsrs-1234-1234-1234",
             "service_id" : "ssss-1234-1234-1234",
-            "weekday" : "Monday",
+            "rrule" : "RRULE:FREQ=WEEKLY;BYDAY=MO",
+            "recurrence": "Every Monday",
             "opens_at" : "10:00:00",
             "closes_at" : "11:30:00"
           },
           {
             "id" : "rsrs-2234-1234-1234",
             "service_id" : "ssss-1234-1234-1234",
-            "weekday" : "Wednesday",
+            "rrule" : "RRULE:FREQ=WEEKLY;BYDAY=WE",
+            "recurrence": "Every Wednesday",
             "opens_at" : "14:00:00",
             "closes_at" : "15:00:00"
           }
@@ -240,12 +246,15 @@
         "wait_time" : null,
         "accreditations" : null,
         "licenses" : null,
+        "last_updated" : "2019-03-27T19:26:18.500Z",
         "contacts" : [
           {
             "id" : "cccc-1234-1234-1234",
             "service_id" : "ssss-2234-1234-1234",
             "name" : "Surbjit Mahey",
             "title" : null,
+            "sensitive_data" : false,
+            "personal_data" : true,
             "email" : "surbjit.mahey@hackney.gov.uk",
             "phones" : [{
               "id" : "phph-5234-1234-1234",
@@ -265,7 +274,8 @@
           {
             "id" : "rsrs-1234-1234-1234",
             "service_id" : "ssss-1234-1234-1234",
-            "weekday" : "Tuesday",
+            "rrule": "RRULE:INTERVAL=2;FREQ=WEEKLY;BYDAY=TU",
+            "recurrence" : "Every 2 weeks on Tuesday",
             "opens_at" : "13:00:00",
             "closes_at" : "14:00:00"
           }
@@ -300,6 +310,8 @@
             "service_id" : "ssss-2234-1234-1234",
             "name" : "Surbjit Mahey",
             "title" : null,
+            "sensitive_data" : false,
+            "personal_data" : true,
             "email" : "surbjit.mahey@hackney.gov.uk",
             "phones" : [{
               "id" : "phph-5234-1234-1234",

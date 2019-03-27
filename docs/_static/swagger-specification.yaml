@@ -1047,6 +1047,12 @@ definitions:
       email:
         description: 'The email address of the person.'
         type: string
+      personal_data:
+        description: 'Whether this contact includes personal data'
+        type: boolean
+      sensitive_data:
+        description: 'Whether this contact is considered to be sensitive'
+        type: boolean
       phones:
         type: "array"
         items:
@@ -1313,10 +1319,15 @@ definitions:
       url:
         description: 'The URL (website address) of the organization.'
         type: string
+      last_updated:
+        description: 'The last time the entry was manually updated or checked.'
+        type: string
+        format: date-time
     required:
       - id
       - name
       - description
+      - last_updated
   organization_complete:
     description: 'Provides a full description of an organization entity'
     properties:
@@ -1364,10 +1375,10 @@ definitions:
         type: "array"
         items:
           $ref: "#/definitions/service"
-      registrations:
+      identifiers:
         type: "array"
         items:
-          $ref: "#/definitions/registration"
+          $ref: "#/definitions/identifier"
     required:
       - id
       - name
@@ -1538,8 +1549,11 @@ definitions:
       service_at_location_id:
         description: 'The identifier of the ‘service at location’ table entry, when this schedule is specific to a service in a particular location.'
         type: string
-      weekday:
-        description: 'The day of the week that this entry relates to.'
+      rrule:
+        description: 'An iCalendar recurrence rule e.g. RRULE:FREQ=MONTHLY;BYDAY=+1FR'
+        type: string
+      recurrence:
+        description: 'A human readable version of the recurrence rule'
         type: string
       opens_at:
         description: 'The time when a service or location opens. This should use HH:MM format and should include timezone information, either adding the suffix ‘Z’ when the date is in UTC, or including an offset from UTC (e.g. 09:00-05:00 for 9am East Coast Time.'
@@ -1549,7 +1563,8 @@ definitions:
         type: string
     required:
       - id
-      - weekday
+      - opens_at
+      - rrule
   required_document:
     description: 'Details of any documents that are required in order to access or use services.'
     properties:
@@ -1575,9 +1590,6 @@ definitions:
         type: string
       program_id:
         description: 'The identifier of the program this service is delivered under.'
-        type: string
-      location_id:
-        description: 'The identifier of the location where this service is delivered.'
         type: string
       name:
         description: 'The official or public name of the service.'
@@ -1615,12 +1627,17 @@ definitions:
       licenses:
         description: 'An organization may have a license issued by a government entity to operate legally. A list of any such licenses can be provided here.'
         type: string
+      last_updated:
+        description: 'The last time the entry was manually updated or checked.'
+        type: string
+        format: date-time
     required:
       - id
       - name
       - description
       - organization_id
       - status
+      - last_updated
   service_complete:
     description: Full details about a service.
     properties:
@@ -1632,9 +1649,6 @@ definitions:
         type: string
       program_id:
         description: 'The identifier of the program this service is delivered under.'
-        type: string
-      location_id:
-        description: 'The identifier of the location where this service is delivered.'
         type: string
       name:
         description: 'The official or public name of the service.'
@@ -1715,6 +1729,25 @@ definitions:
       - name
       - description
       - status
+  service_at_location:
+    description: 'The services at location object creates a link between a service and a specific location.'
+    properties:
+      id:
+        description: 'Each service_at_location must have a unique identifier.'
+        type: string
+      location_id:
+        description: 'The identifier of the location where this service is delivered.'
+        type: string
+      service_id:
+        description: 'The identifier of the service for which this entry describes the service area.'
+        type: string
+      description:
+        description: 'Any additional information that should be displayed to users about the service at this specific location.'
+        type: string
+    required:
+      - id
+      - location_id
+      - service_id
   service_area:
     description: 'Details of the geographic area for which a service is available.'
     properties:
@@ -1727,31 +1760,37 @@ definitions:
       service_area:
         description: 'The geographic area where a service is available. This is a free-text description, and so may be precise or indefinite as necessary.'
         type: string
+      identifier:
+        description: 'The identifier for the given boundary.'
+        type: string
+      type:
+        description: 'The type of boundary the service area represents e.g. "Local Authority District".'
+        type: string
       description:
         description: 'A more detailed description of this service area. Used to provide any additional information that cannot be communicated using the structured area and geometry fields.'
         type: string
     required:
       - id
       - service_area
-  registration:
-    description: "Detail of an organization's registration with a professional or state body."
+  identifier:
+    description: "Detail of an organization's identifier used by an external source."
     properties:
       id:
-        description: 'Each registration must have a unique identifier.'
+        description: 'Each entry must have a unique identifier.'
         type: string
       organization_id:
-        description: 'The id of the organization for which this entry describes the registration.'
+        description: 'The id of the organization this identifier belongs to.'
         type: string
-      register:
-        description: 'The name of the body with which the organization is registered e.g. Companies House.'
+      identification_body:
+        description: 'The name of the body that uses or issued the identifier e.g. Companies House.'
         type: string
       identifier:
-        description: 'The registration code or identifier issued by the register.'
+        description: 'The registration code or identifier issued by the body.'
         type: string
     required:
       - id
       - organization_id
-      - register
+      - identification_body
       - identifier
   error_response:
     description: 'Describes an HTTP error returned by the service'
